@@ -1,0 +1,29 @@
+.heroContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    padding: 2rem;
+    text-align: center;
+}
+
+.imageContainer {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.profileImage {
+    border-radius: 50%;
+    border: 3px solid #000;
+}
+
+.greeting {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.highlight {
+    color: #9174FF;
+}
