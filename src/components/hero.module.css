@@ -1,29 +1,73 @@
 .heroContainer {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh; /* Full viewport height */
     padding: 2rem;
-    text-align: center;
+}
+
+.contentWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
 }
 
 .imageContainer {
-    position: relative;
-    margin-bottom: 2rem;
+    position: absolute;
+    top: 10%;
+    right: 10%;
 }
 
 .profileImage {
+    width: 250px;
+    height: 250px;
+    padding-top: 10px;
+    object-fit: contain;
     border-radius: 50%;
-    border: 3px solid #000;
+    border: 8px solid var(--border-black);
 }
 
 .greeting {
-    font-size: 2.5rem;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    font-size: 3rem;
     font-weight: 600;
     margin: 0;
+    line-height: 1.2;
+    text-align: left;
 }
 
 .highlight {
-    color: #9174FF;
+    color: var(--accent-purple);
 }
+
+
+@media (min-width: 768px) {
+    .contentWrapper {
+        max-width: 800px;
+    }
+    .imageContainer {
+        top: 5%;
+        right: 10%;
+    }
+
+    .profileImage {
+        width: 300px;
+        height: 300px;
+    }
+
+    .greeting {
+        font-size: 4rem;
+        bottom: 5%;
+        left: 10%;
+    }
+}
+
+.heroContainer > :global(div[class*="socialContainer"]) {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }

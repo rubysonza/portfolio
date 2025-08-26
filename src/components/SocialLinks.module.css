@@ -1,0 +1,39 @@
+.socialContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+.socialLink {
+    /* 1. Create the shape and size for our "background" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    
+    /* 2. Style the default state */
+    background-color: transparent;
+    border: 2px solid var(--text-black);
+    color: var(--text-color); /* This sets the icon's fill color */
+    font-size: 1.25rem;
+    
+    /* 3. Add a smooth transition */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+  
+  /* 4. Define the hover state */
+.socialLink:hover {
+    background-color: var(--background-black); /* The background fills with purple */
+    border-color: var(--background-black); /* The border also becomes purple */
+    
+    /* The icon's fill becomes the page's background color, creating the "punched-out" effect! */
+    color: var(--background-white); 
+}
+
+.githubLink svg {
+    width: 25px;
+    height: 25px;
+}
