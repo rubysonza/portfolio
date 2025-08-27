@@ -1,7 +1,9 @@
+// src/components/SocialLinks.js
+
 import styles from './SocialLinks.module.css';
-import { FaLinkedinIn } from "react-icons/fa";
-import { TbBrandGithub } from "react-icons/tb";
-import { SiGmail } from "react-icons/si";
+import { FaLinkedinIn } from 'react-icons/fa';
+import { TbBrandGithub } from 'react-icons/tb';
+import { SiGmail } from 'react-icons/si';
 
 export default function SocialLinks() {
   return (

@@ -1,0 +1,85 @@
+.aboutContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+.contentWrapper {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+  
+.imagePlaceholder {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+    /* It's invisible, it just takes up space */
+}
+  
+.name {
+    font-family: var(--font-josefin);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.namePlaceholder {
+    opacity: 0;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+  
+.bio {
+    max-width: 350px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--subtle-text-color);
+}
+  
+.infoList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+  
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+}
+  
+.icon {
+    color: var(--accent-purple);
+    font-size: 1.2rem;
+
+}
+  
+.resumeButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--accent-purple);
+    color: var(--text-white);
+    font-family: var(--font-reddit-mono);
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* .resumeButton:hover {
+} */

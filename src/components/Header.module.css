@@ -3,9 +3,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--background-white);
+    background-color: none;
     z-index: 1000;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1.25rem 1rem;
 }
 
 .container {

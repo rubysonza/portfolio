@@ -1,10 +1,22 @@
-import Hero from "../components/Hero.js";
+// src/app/page.js
+"use client";
+
+import { useRef } from 'react';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Projects from '@/components/Projects';
+import SocialLinks from '@/components/SocialLinks';
 
 export default function Home() {
+  const aboutSectionRef = useRef(null);
+
   return (
-    <div>
+    <main>
       <Hero />
-      {/* Add Project and Contact sections here */}
-    </div>
+      <About />
+      <Projects />
+
+      <SocialLinks />
+    </main>
   );
 }

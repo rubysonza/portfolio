@@ -9,7 +9,13 @@ export default function Hero() {
 
       <div className={styles.contentWrapper}>
         <div className={styles.imageContainer}>
-          <Image src="/profile.webp" alt="Photo of Ruby Sonza" width={200} height={200} className={styles.profileImage} />
+          <Image
+            src="/profile.webp"
+            alt="Photo of Ruby Sonza"
+            width={200}
+            height={200}
+            className={styles.profileImage}
+          />
           <RotatingText />
         </div>
 
@@ -23,8 +29,7 @@ export default function Hero() {
           </div>
         </h1>
       </div>
-
-      <SocialLinks />
+      
     </section>
   );
 }

@@ -9,14 +9,15 @@
 .contentWrapper {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     height: 500px;
 }
 
 .imageContainer {
     position: absolute;
     top: 10%;
-    right: 10%;
+    right: 0;
+    padding: 1rem;
 }
 
 .profileImage {
@@ -31,7 +32,7 @@
 .greeting {
     position: absolute;
     bottom: 10%;
-    left: 10%;
+    left: 0;
     font-size: 3rem;
     font-weight: 600;
     margin: 0;
@@ -46,7 +47,7 @@
 
 @media (min-width: 768px) {
     .contentWrapper {
-        max-width: 800px;
+        max-width: 700px;
     }
     .imageContainer {
         top: 5%;
