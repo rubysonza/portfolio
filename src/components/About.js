@@ -1,7 +1,6 @@
 "use client";
 
 import { forwardRef } from 'react';
-import Image from 'next/image';
 import styles from './About.module.css';
 import { FiMapPin } from 'react-icons/fi';
 import { RiGraduationCapLine } from "react-icons/ri";

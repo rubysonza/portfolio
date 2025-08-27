@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import SocialLinks from '@/components/SocialLinks';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const aboutSectionRef = useRef(null);
@@ -13,10 +14,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <About />
+      <About ref={aboutSectionRef}/>
       <Projects />
-
-      <SocialLinks />
+      <SocialLinks animated={true} targetRef={aboutSectionRef}/>
+      <Footer />
     </main>
   );
 }

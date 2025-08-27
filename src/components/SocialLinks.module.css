@@ -1,14 +1,17 @@
-/* src/components/SocialLinks.module.css */
-
 .socialContainer {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
   z-index: 100;
-  display: flex; /* This ensures horizontal alignment */
+  display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.fixedContainer {
+  position: fixed;
+  bottom: 2rem;
+  z-index: 100;
 }
 
 .socialLink {
