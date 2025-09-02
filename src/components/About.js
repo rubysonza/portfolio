@@ -1,27 +1,37 @@
 "use client";
 
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import styles from './About.module.css';
 import { FiMapPin } from 'react-icons/fi';
 import { RiGraduationCapLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 
+const About = forwardRef(function About({ setRefs }, ref) {
 
+  const rubyTargetRef = useRef(null);
+  const imageTargetRef = useRef(null);
+  const textTargetRef = useRef(null);
 
-const About = forwardRef(function About(props, ref) {
+  useEffect(() => {
+    if (setRefs) {
+      setRefs({ rubyTargetRef, imageTargetRef, textTargetRef });
+    }
+  }, [setRefs]);
+
   return (
-    <section className={styles.aboutContainer} ref={ref}>
+    <section ref={ref} className={styles.aboutContainer}>
       <div className={styles.contentWrapper}>
-        <div className={styles.imagePlaceholder} />
+        <div ref={imageTargetRef} className={styles.imagePlaceholder} />
 
         <div>
             <h2 className={styles.name}>
-                <span className={styles.namePlaceholder}>Ruby </span>
-                <span className={styles.highlight}>Sonza</span>
+                <span ref={rubyTargetRef} className={styles.namePlaceholder}>Ruby</span>
+                <motion.span className={styles.highlight}> Sonza</motion.span>
             </h2>
 
             <p className={styles.bio}>
-            I&apos;m a web designer and developer guided by a strategic mind and a
+            I&apos;m a <span ref={textTargetRef} className={styles.paragraphPlaceholder}>web designer and developer</span> guided by a strategic mind and a
             creative heart.
             </p>
         </div>

@@ -7,7 +7,6 @@ import { FaLinkedinIn } from 'react-icons/fa';
 import { TbBrandGithub } from 'react-icons/tb';
 import { SiGmail } from 'react-icons/si';
 
-// Set animated to false by default
 export default function SocialLinks({ animated = false, targetRef }) {
 
   // --- RENDER THE ANIMATED, FIXED VERSION ---

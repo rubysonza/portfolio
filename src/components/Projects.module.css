@@ -1,65 +1,66 @@
 .projectsContainer {
     height: 200vh;
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
     position: relative;
+    padding: 5rem 1rem;
+    overflow: visible;
+}
+
+.stickyWrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: visible;
 }
 
 .title {
-    font-family: var(--font-josefin);
-    display: flex;
-    flex-grow: 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 4rem;
-    position: sticky;
-    z-index: 10;
-    margin: 0;
-    padding: 6rem 0 0.5rem 0;
+  font-family: var(--font-josefin);
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
-
-/* --- CHANGES FOR THE SCROLL CONTAINER --- */
-.scrollContainer {
-    height: auto;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-}
-
-.scrollContainer::-webkit-scrollbar { display: none; }
-.scrollContainer { scrollbar-width: none; }
-
 
 .slide {
-    height: 100vh;
-    scroll-snap-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    padding: 2rem;
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.slideContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
 }
 
 .imageContainer {
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 16 / 9;
-    border: 2px dashed var(--text-black);
-    border-radius: 1.2rem;
-    padding: 0.1rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: gray; /* placeholder */
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 3 / 2;
+  border: 2px dashed var(--text-black);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: black; /* placeholder */
 }
 
 .projectImage {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 1rem;
 }
 
 .projectInfo {

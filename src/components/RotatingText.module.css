@@ -17,9 +17,9 @@
 
 .svgText {
     font-family: var(--font-reddit-mono);
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 3px;
-    fill: var(--text-black);
+    fill: gray;
     text-transform: lowercase;
 }
 
