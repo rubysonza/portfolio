@@ -1,101 +1,150 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import styles from './Hero.module.css';
 import RotatingText from './RotatingText';
+import AnimatedText from './AnimatedText';
+import { Stick } from 'next/font/google';
 
-const greetingLine1 = "Hey,".split("");
-const greetingLine2 = "I'm".split("");
-const greetingLine3 = "Ruby".split("");
 
-const containerVariants = {
-  hidden: { opacity: 0 },
+const greetingContainerVariants = {
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 1.2,
+      staggerChildren: 0.4,
+      delayChildren: 0.6,
     },
   },
 };
 
-const letterVariants = {
-  hidden: { opacity: 0, y: "100%" },
-  visible: {
+const wordVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
     opacity: 1,
     y: "0%",
-    transition: { duration: 0.3 },
+    transition: { duration: 0.4, ease: "backOut" }
   },
 };
 
 
+export default function Hero({ heroRef, targetRefs }) {
 
-export default function Hero() {
+  const [deltas, setDeltas] = useState({ 
+    ruby: {x: 0, y: 0, scale: 1},
+    image: {x: 0, y: 0, scale: 1}
+  });
+
+  const rubyStartRef = useRef(null);
+  const imageStartRef = useRef(null);
+
+  useEffect(() => {
+    const measurePositions = () => {
+      if (rubyStartRef.current && targetRefs?.rubyTargetRef?.current && imageStartRef.current && targetRefs?.imageTargetRef?.current) {
+        const rubyStartRect = rubyStartRef.current.getBoundingClientRect();
+        const rubyTargetRect = targetRefs.rubyTargetRef.current.getBoundingClientRect();
+        const imageStartRect = imageStartRef.current.getBoundingClientRect();
+        const imageTargetRect = targetRefs.imageTargetRef.current.getBoundingClientRect();
+        
+        setDeltas({
+          ruby: {
+            x: rubyTargetRect.left - rubyStartRect.left,
+            y: rubyTargetRect.top - rubyStartRect.top,
+            scale: rubyTargetRect.width / rubyStartRect.width,
+          },
+          image: {
+            x: imageTargetRect.x - imageStartRect.x,
+            y: imageTargetRect.top - imageStartRect.top,
+          }
+        });
+      }
+    };
+
+    measurePositions();
+    window.addEventListener('resize', measurePositions);
+    return () => window.removeEventListener('resize', measurePositions);
+  }, [targetRefs]);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"], 
+  });
+
+  const fadeOutOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  const pinProgress = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
+  
+  const rubyX = useTransform(pinProgress, [0, 1], [0, deltas.ruby.x]);
+  const rubyY = useTransform(pinProgress, [0, 1], [0, deltas.ruby.y]);
+  const rubyScale = useTransform(pinProgress, [0, 1], [1, deltas.ruby.scale]);
+
+  const imageX = useTransform(pinProgress, [0.1, 1], [0, deltas.image.x]);
+  const imageY = useTransform(pinProgress, [0.1, 1], [0, deltas.image.y]);
+
   return (
-    <section className={styles.heroContainer}>
+    <section ref={heroRef} className={styles.heroContainer}>
       <div className={styles.contentWrapper}>
 
-      <motion.div
+        <motion.div
+          ref={imageStartRef}
           className={styles.imageContainer}
-          initial={{ opacity: 0, x: 100, y: 200, scale: 0.5 }}
-          animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-          transition={{
-            duration: 0.8,
-            ease: "backInOut",
-          }}
+          style={{ x: imageX, y: imageY }}
         >
-          <Image
-            src="/profile.webp"
-            alt="Photo of Ruby Sonza"
-            width={200}
-            height={200}
-            className={styles.profileImage}
-          />
-          
           <motion.div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              x: '-50%',
-              y: '-50%',
-            }}
-            initial={{ opacity: 0, rotate: 135, scale: 0.9 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            transition={{ 
-              delay: 0, 
-              duration: 3.5, 
-              ease: "easeOut",
-            }}
+            initial={{ opacity: 0, scale: 0.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "backOut"}}
           >
-            <RotatingText />
+            <Image src="/profile.webp" alt="Photo of Ruby Sonza" width={200} height={200} className={styles.profileImage} />
           </motion.div>
+
+          <motion.div style={{ opacity: fadeOutOpacity }}>
+            <motion.div 
+              initial={{ opacity: 0, rotate: 360, delay: 2 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                x: '-50%',
+                y: '-50%'
+              }}
+            >
+              <RotatingText />
+            </motion.div>
+            </motion.div>
         </motion.div>
 
-
         <h1 className={styles.greeting}>
-          <motion.div 
-            className={styles.greetingLine} 
-            variants={containerVariants} 
-            initial="hidden" 
+          <motion.div
+            variants={greetingContainerVariants}
+            initial="hidden"
             animate="visible"
+            transition={{duration: 0.1}}
           >
-              {greetingLine1.map((letter, index) => (
-                <motion.span key={index} variants={letterVariants}>{letter}</motion.span>
-              ))}
-              <br></br>
-              {greetingLine2.map((letter, index) => (
-                <motion.span key={index} variants={letterVariants}>{letter}</motion.span>
-              ))}
-              <span>&nbsp;</span> { }
-              {greetingLine3.map((letter, index) => (
-                <motion.span key={index} variants={letterVariants} className={styles.highlight}>{letter}</motion.span>
-              ))}
+            <motion.div style={{ opacity: fadeOutOpacity }}>
+              <motion.div variants={wordVariants}>
+                <AnimatedText text="Hey," className={styles.greetingLine} />
+              </motion.div>
+            </motion.div>
+
+            <div className={styles.greetingLine} style={{ display: 'flex', gap: '1.2rem' }}>
+              <motion.div style={{ opacity: fadeOutOpacity }}>
+                <motion.div variants={wordVariants}>
+                  <AnimatedText text="I'm" />
+                </motion.div>
+              </motion.div>
+
+              <motion.div ref={rubyStartRef} style={{ x: rubyX, y: rubyY, scale: rubyScale }}>
+                <motion.div variants={wordVariants}>
+                  <AnimatedText text="Ruby" className={styles.highlight} />
+                </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
-
         </h1>
-
       </div>
     </section>
   );

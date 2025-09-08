@@ -17,6 +17,23 @@
     gap: 1.5rem;
     padding: 3rem 0;
 }
+
+.imagePlaceholder {
+    position: relative;
+    top: 10%;
+    right: 0;
+    padding: 1rem;
+}
+
+.profileImage {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    padding-top: 10px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 8px solid var(--border-black);
+}
   
 .name {
     font-family: var(--font-josefin);
@@ -25,12 +42,9 @@
 }
 
 .namePlaceholder {
-    opacity: 0;
+    opacity: 1;
 }
 
-.highlight {
-    color: var(--accent-color);
-}
   
 .bio {
     max-width: 320px;
@@ -38,7 +52,7 @@
     line-height: 1.6;
     text-align: center;
     margin: 1rem 1rem 2.5rem 1rem;
-    color: var(--subtle-text-color);
+    color: var(--text-black);
     font-family: var(--font-reddit-mono);
 }
   
@@ -78,3 +92,11 @@
 
 /* .resumeButton:hover {
 } */
+
+
+@media (min-width: 768px) {
+    .profileImage {
+        width: 300px;
+        height: 300px;
+    }
+}

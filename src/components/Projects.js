@@ -32,7 +32,7 @@ export default function Projects() {
   const titleY = useTransform(scrollYProgress, [0, 0.2], [0, 0]);
 
   return (
-    <section ref={containerRef} className={styles.projectsContainer}>
+    <section ref={containerRef} className='projectsContainer'>
       <div className={styles.stickyWrapper}>
         <motion.h2
           className={styles.title}

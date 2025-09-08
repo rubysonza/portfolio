@@ -6,8 +6,8 @@
     transform: translate(-50%, -50%); /* Center it perfectly */
 
     /* Make the container slightly larger than the image to give the text space */
-    width: 360px;
-    height: 360px;
+    width: 300px;
+    height: 300px;
 }
 
 .rotatingTextSvg {

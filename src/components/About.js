@@ -1,39 +1,43 @@
 "use client";
 
-import { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from './About.module.css';
 import { FiMapPin } from 'react-icons/fi';
 import { RiGraduationCapLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 
-const About = forwardRef(function About({ setRefs }, ref) {
+const About = forwardRef(function About({ setTargetRefs }, ref) {
 
   const rubyTargetRef = useRef(null);
   const imageTargetRef = useRef(null);
-  const textTargetRef = useRef(null);
 
   useEffect(() => {
-    if (setRefs) {
-      setRefs({ rubyTargetRef, imageTargetRef, textTargetRef });
+    const rubyRect = rubyTargetRef.current.getBoundingClientRect();
+    const imageRect = imageTargetRef.current.getBoundingClientRect();
+
+    if (setTargetRefs) {
+      setTargetRefs({ rubyTargetRef, imageTargetRef });
     }
-  }, [setRefs]);
+  }, [setTargetRefs]);
 
   return (
     <section ref={ref} className={styles.aboutContainer}>
       <div className={styles.contentWrapper}>
-        <div ref={imageTargetRef} className={styles.imagePlaceholder} />
-
         <div>
-            <h2 className={styles.name}>
-                <span ref={rubyTargetRef} className={styles.namePlaceholder}>Ruby</span>
-                <motion.span className={styles.highlight}> Sonza</motion.span>
-            </h2>
 
-            <p className={styles.bio}>
-            I&apos;m a <span ref={textTargetRef} className={styles.paragraphPlaceholder}>web designer and developer</span> guided by a strategic mind and a
-            creative heart.
-            </p>
+          <div ref={imageTargetRef} className={styles.imagePlaceholder}>
+            <img src="/profile.webp" alt="Photo of Ruby Sonza" width={200} height={200} className={styles.profileImage} />
+          </div>
+
+          <h2 className={styles.name}>
+              <span ref={rubyTargetRef} className={styles.namePlaceholder}>Ruby</span>
+              <motion.span> Sonza</motion.span>
+          </h2>
+
+          <p className={styles.bio}>
+            I&apos;m a web designer and developer guided by a strategic mind and a creative heart.
+          </p>
         </div>
 
         <ul className={styles.infoList}>
@@ -48,7 +52,7 @@ const About = forwardRef(function About({ setRefs }, ref) {
         </ul>
 
         <a
-          href="/ruby-sonza-resume.pdf" // Place your resume in the `public` folder
+          href="/ruby-sonza-resume.pdf"
           download
           className={styles.resumeButton}
         >

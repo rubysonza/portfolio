@@ -1,3 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-josefin: 'Josefin Sans', sans-serif;
+  --font-redditMono: 'Reddit Mono', monospace;
+  --color-black: #232323;
+  --color-white: #FFF9F4;
+  --color-gray: #505050;
+  --color-purple: #9174FF;
+}
+
 :root {
   --background-white: #FFF9F4;
   --background-black: #232323;
@@ -8,25 +19,29 @@
   --border-black: #232323;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
+
+body {
   margin: 0;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  font-family: var(--font-josefin);
-  background-color: var(--background-white);
-  color: var(--text-color);
+  padding: 0;
+  font-family: theme(--font-josefin);
+  background-color: theme(--color-white);
+  color: theme(--color-black);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+/* HEADER navbar links */
+.desktopNav a {
+    font-family: var(--font-reddit-mono);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: theme(--color-white);
+    background-color: theme(--color-black);
+    padding: 4px 8px;
 }
