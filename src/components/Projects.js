@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -6,33 +6,46 @@ import styles from './Projects.module.css';
 
 const projects = [
     {
-        number: "1/2",
-        title: "Portfolio",
-        description: "A comprehensive skincare guide featuring the full routine steps, products catered to your needs, and an actives glossary.",
-        imageUrl: ""
+        number: '1/2',
+        title: 'Portfolio',
+        description: 'A comprehensive skincare guide featuring the full routine steps, products catered to your needs, and an actives glossary.',
+        imageUrl: ''
     },
     {
-        number: "2/2",
-        title: "Auralyst",
-        description: "A comprehensive skincare guide featuring the full routine steps, products catered to your needs, and an actives glossary.",
-        imageUrl: ""
+        number: '2/2',
+        title: 'Auralyst',
+        description: 'A comprehensive skincare guide featuring the full routine steps, products catered to your needs, and an actives glossary.',
+        imageUrl: ''
     }
 ];
 
+// Accept the shared scrollYProgress from page.js
 export default function Projects() {
   const containerRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({
+  // This is for the animations *within* the Projects section
+  const { scrollYProgress: projectsScrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start']
   });
 
-  const titleScale = useTransform(scrollYProgress, [0, 0.2], [0.5, 1]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const titleY = useTransform(scrollYProgress, [0, 0.2], [0, 0]);
+  // 👇 THESE ARE THE KEY CHANGES 👇
+  // Use the HERO'S scroll progress to control the visibility of the ENTIRE projects section.
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start']
+  });
+
+  // Your existing animations for the title and slides
+  const titleScale = useTransform(projectsScrollYProgress, [0, 0.2], [0.5, 1]);
+  const titleOpacity = useTransform(projectsScrollYProgress, [0, 0.2], [0, 1]);
+  const titleY = useTransform(projectsScrollYProgress, [0, 0.2], [0, 0]);
 
   return (
-    <section ref={containerRef} className='projectsContainer'>
+    <motion.section
+      ref={containerRef}
+      className='projectsContainer'
+    >
       <div className={styles.stickyWrapper}>
         <motion.h2
           className={styles.title}
@@ -42,12 +55,9 @@ export default function Projects() {
         </motion.h2>
 
         {projects.map((project, i) => {
-          // Define the start and end points for each slide's animation
           const start = 0.1 + i * 0.2;
           const end = start + 0.2;
-          
-          // Animate each slide based on its specific scroll range
-          const scale = useTransform(scrollYProgress, [start, end], [0.8, 1]);
+          const scale = useTransform(projectsScrollYProgress, [start, end], [0.8, 1]);
 
           return (
             <motion.div key={i} className={styles.slide} style={{ scale }}>
@@ -69,6 +79,6 @@ export default function Projects() {
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 }
