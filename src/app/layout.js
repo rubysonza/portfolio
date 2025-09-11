@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${josefin_sans.variable} ${reddit_mono.variable}`}>
       <body>
-        <Header /> {/* 2. Add the Header component here */}
+        <Header />
         {children}
       </body>
     </html>
