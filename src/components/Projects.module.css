@@ -1,5 +1,5 @@
 .projectsContainer {
-    height: 200vh;
+    height: 400vh;
     position: relative;
     padding: 5rem 1rem;
 }
@@ -7,8 +7,8 @@
 .stickyWrapper {
     position: sticky;
     top: 0;
-    height: 100vh;
-    overflow: visible;
+    height: 200vh;
+    overflow: hidden;
 }
 
 .title {

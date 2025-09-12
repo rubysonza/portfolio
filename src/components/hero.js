@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import styles from './Hero.module.css';
 import RotatingText from './RotatingText';
 import AnimatedText from './AnimatedText';
 import { Stick } from 'next/font/google';
@@ -29,122 +27,70 @@ const wordVariants = {
 };
 
 
-export default function Hero({ heroRef, targetRefs }) {
-
-  const [deltas, setDeltas] = useState({ 
-    ruby: {x: 0, y: 0, scale: 1},
-    image: {x: 0, y: 0, scale: 1}
-  });
-
-  const rubyStartRef = useRef(null);
-  const imageStartRef = useRef(null);
-
-  useEffect(() => {
-    const measurePositions = () => {
-      if (rubyStartRef.current && targetRefs?.rubyTargetRef?.current && imageStartRef.current && targetRefs?.imageTargetRef?.current) {
-        const rubyStartRect = rubyStartRef.current.getBoundingClientRect();
-        const rubyTargetRect = targetRefs.rubyTargetRef.current.getBoundingClientRect();
-        const imageStartRect = imageStartRef.current.getBoundingClientRect();
-        const imageTargetRect = targetRefs.imageTargetRef.current.getBoundingClientRect();
-        
-        setDeltas({
-          ruby: {
-            x: rubyTargetRect.left - rubyStartRect.left,
-            y: rubyTargetRect.top - rubyStartRect.top,
-            scale: rubyTargetRect.width / rubyStartRect.width,
-          },
-          image: {
-            x: imageTargetRect.x - imageStartRect.x,
-            y: imageTargetRect.top - imageStartRect.top,
-          }
-        });
-      }
-    };
-
-    measurePositions();
-    window.addEventListener('resize', measurePositions);
-    return () => window.removeEventListener('resize', measurePositions);
-  }, [targetRefs]);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"], 
-  });
-
-  const fadeOutOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-
-  const pinProgress = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
-  
-  const rubyX = useTransform(pinProgress, [0, 1], [0, deltas.ruby.x]);
-  const rubyY = useTransform(pinProgress, [0, 1], [0, deltas.ruby.y]);
-  const rubyScale = useTransform(pinProgress, [0, 1], [1, deltas.ruby.scale]);
-
-  const imageX = useTransform(pinProgress, [0.1, 1], [0, deltas.image.x]);
-  const imageY = useTransform(pinProgress, [0.1, 1], [0, deltas.image.y]);
-
+export default function Hero() {
   return (
-    <section ref={heroRef} className={styles.heroContainer}>
-      <div className={styles.contentWrapper}>
+    <section className='relative w-full h-[100vh]'>
+      <div className='sticky h-screen flex items-center justify-center overflow-hidden'>
 
-        <motion.div
-          ref={imageStartRef}
-          className={styles.imageContainer}
-          style={{ x: imageX, y: imageY }}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, ease: "backOut"}}
-          >
-            <Image src="/profile.webp" alt="Photo of Ruby Sonza" width={200} height={200} className={styles.profileImage} />
-          </motion.div>
-
-          <motion.div style={{ opacity: fadeOutOpacity }}>
-            <motion.div 
-              initial={{ opacity: 0, rotate: 360, delay: 2 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                x: '-50%',
-                y: '-50%'
-              }}
-            >
-              <RotatingText />
-            </motion.div>
-            </motion.div>
-        </motion.div>
-
-        <h1 className={styles.greeting}>
-          <motion.div
-            variants={greetingContainerVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{duration: 0.1}}
-          >
-            <motion.div style={{ opacity: fadeOutOpacity }}>
-              <motion.div variants={wordVariants}>
-                <AnimatedText text="Hey," className={styles.greetingLine} />
+        <div className='relative inset-0 flex justify-center items-center h-[100vh] w-full'>
+          <div className='relative flex justify-center items-center top-0 md:top-18 h-full w-full max-h-[500px]
+                          max-w-[450px] sm:max-w-[550px] lg:max-w-[650px]'>
+            <div className='absolute flex p-4 justify-center items-center top-15 md:top-0 right-4'>
+              <motion.div
+                layoutId="profile-image"
+                className='will-change-transform z-30'
+              >
+                <Image
+                  src='/profile.webp'
+                  alt='Photo of Ruby Sonza'
+                  width={300}
+                  height={300}
+                  priority
+                  className='pt-3 object-contain rounded-full border-8 border-solid border-black
+                            w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px]'
+                />
               </motion.div>
-            </motion.div>
-
-            <div className={styles.greetingLine} style={{ display: 'flex', gap: '1.2rem' }}>
-              <motion.div style={{ opacity: fadeOutOpacity }}>
-                <motion.div variants={wordVariants}>
-                  <AnimatedText text="I'm" />
-                </motion.div>
-              </motion.div>
-
-              <motion.div ref={rubyStartRef} style={{ x: rubyX, y: rubyY, scale: rubyScale }}>
-                <motion.div variants={wordVariants}>
-                  <AnimatedText text="Ruby" className={styles.highlight} />
-                </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.5 } }}
+                className='z-0'
+              >
+                <RotatingText />
               </motion.div>
             </div>
-          </motion.div>
-        </h1>
+
+            <div className='flex flex-col'>
+              <motion.div
+                variants={greetingContainerVariants}
+                initial="hidden"
+                animate="visible"
+                className='flex flex-col absolute p-10 bottom-[5%] left-0 font-bold text-[3rem] md:text-[3.5rem] lg:text-[4rem]'
+              >
+                <motion.div 
+                  variants={wordVariants}
+                  className=''
+                >
+                  <AnimatedText text='Hey,' />
+                </motion.div>
+
+                <div className='flex gap-5'>
+                  <motion.div variants={wordVariants} className=''>
+                    <AnimatedText text='I&apos;m' />
+                  </motion.div>
+
+                  <motion.div
+                    variants={wordVariants}
+                    layoutId="ruby-text"
+                    className='will-change-transform z-30'
+                  >
+                    <AnimatedText text='Ruby' className='text-purple' />
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

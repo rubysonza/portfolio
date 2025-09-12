@@ -6,7 +6,7 @@ import styles from './RotatingText.module.css';
 export default function RotatingText() {
   return (
     <div className='absolute top-[50% left-[50%] -translate-x-1/2 -translate-y-1/2 
-                    w-[310px] h-[310px] sm:w-[340px] sm:h-[340px] md:w-[400px] md:h-[400px] lg:w-[430px] lg:h-[430px]'>
+                    w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[400px] md:h-[400px] lg:w-[430px] lg:h-[430px]'>
       <motion.svg
         className='w-full h-full'
         viewBox="0 0 200 200"

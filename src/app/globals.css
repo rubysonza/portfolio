@@ -45,3 +45,8 @@ a {
     background-color: theme(--color-black);
     padding: 4px 8px;
 }
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
