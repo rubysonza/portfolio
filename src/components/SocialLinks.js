@@ -2,7 +2,6 @@
 "use client";
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import styles from './SocialLinks.module.css';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { TbBrandGithub } from 'react-icons/tb';
 import { SiGmail } from 'react-icons/si';
@@ -23,16 +22,16 @@ export default function SocialLinks({ animated = false, targetRef }) {
     return (
       <motion.div
         // Use a new class for the fixed positioning
-        className={`${styles.socialContainer} ${styles.fixedContainer}`}
+        className='z-100 fixed flex justify-center items-center w-full gap-4 bottom-[2rem]'
         style={{ opacity, y }}
       >
-        <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className={`${styles.socialLink} ${styles.linkedinLink}`}>
+        <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className='socialLink'>
           <FaLinkedinIn />
         </a>
-        <a href="https://github.com/rubysonza" target="_blank" rel="noopener noreferrer" aria-label="Link to GitHub profile" className={`${styles.socialLink} ${styles.githubLink}`}>
+        <a href="https://github.com/rubysonza" target="_blank" rel="noopener noreferrer" aria-label="Link to GitHub profile" className='socialLink'>
           <TbBrandGithub />
         </a>
-        <a href="mailto:rubyabayasonza@gmail.com" aria-label="Send an email" className={`${styles.socialLink} ${styles.emailLink}`}>
+        <a href="mailto:rubyabayasonza@gmail.com" aria-label="Send an email" className='socialLink'>
           <SiGmail />
         </a>
       </motion.div>
@@ -41,14 +40,14 @@ export default function SocialLinks({ animated = false, targetRef }) {
 
   // --- RENDER THE SIMPLE, STATIC VERSION (FOR THE FOOTER) ---
   return (
-    <div className={styles.socialContainer}>
-      <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className={`${styles.socialLink} ${styles.linkedinLink}`}>
+    <div className='z-100 flex justify-center items-center w-full gap-4'>
+      <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className='socialLink'>
         <FaLinkedinIn />
       </a>
-      <a href="https://github.com/rubysonza" target="_blank" rel="noopener noreferrer" aria-label="Link to GitHub profile" className={`${styles.socialLink} ${styles.githubLink}`}>
+      <a href="https://github.com/rubysonza" target="_blank" rel="noopener noreferrer" aria-label="Link to GitHub profile" className='socialLink'>
         <TbBrandGithub />
       </a>
-      <a href="mailto:rubyabayasonza@gmail.com" aria-label="Send an email" className={`${styles.socialLink} ${styles.emailLink}`}>
+      <a href="mailto:rubyabayasonza@gmail.com" aria-label="Send an email" className='socialLink'>
         <SiGmail />
       </a>
     </div>

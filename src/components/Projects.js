@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import styles from './Projects.module.css';
 
 const projects = [
     {
@@ -44,15 +43,15 @@ export default function Projects() {
   return (
     <motion.section
       ref={containerRef}
-      className='projectsContainer'
+      className='relative h-[400vh] py-20 px-4'
     >
-      <div className={styles.stickyWrapper}>
-        <motion.h2
-          className={styles.title}
+      <div className='sticky h-screen top-0 overflow-hidden'>
+        <motion.h3
+          className='z-1 absolute flex justify-center items-center text-center w-full font-josefin text-6xl font-bold tracking-widest uppercase'
           style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
         >
-          PROJECTS
-        </motion.h2>
+          Projects
+        </motion.h3>
 
         {projects.map((project, i) => {
           const start = 0.1 + i * 0.2;
@@ -60,19 +59,15 @@ export default function Projects() {
           const scale = useTransform(projectsScrollYProgress, [start, end], [0.8, 1]);
 
           return (
-            <motion.div key={i} className={styles.slide} style={{ scale }}>
-              <div className={styles.slideContent}>
-                <div className={styles.imageContainer}>
-                  {project.imageUrl ? (
-                    <img src={project.imageUrl} alt={`${project.title} project screenshot`} className={styles.projectImage} />
-                  ) : (
-                    <div className={styles.imagePlaceholder}></div>
-                  )}
+            <motion.div key={i} className='z-2 sticky flex flex-col justify-center items-center top-0 h-screen w-full' style={{ scale }}>
+              <div className='flex flex-col items-center w-full p-4'>
+                <div className='w-full max-w-[500px] aspect-[3/2] border-2 rounded-4xl p-4 mb-6 bg-black'>
+                  <img src={project.imageUrl} alt={`${project.title} project screenshot`} className='w-full h-full object-contain rounded-2xl' />
                 </div>
-                <div className={styles.projectInfo}>
-                  <span className={styles.projectNumber}>{project.number}</span>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectDescription}>{project.description}</p>
+                <div className='text-center mas-w-[500px]'>
+                  <span className='block mb-2 text-black font-redditMono'>{project.number}</span>
+                  <h3 className='font-josefin text-5xl mb-3'>{project.title}</h3>
+                  <p className='max-w-[25rem] text-xl leading-8 text-black'>{project.description}</p>
                 </div>
               </div>
             </motion.div>

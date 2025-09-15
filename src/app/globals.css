@@ -50,3 +50,24 @@ h2 {
   font-size: 2rem;
   font-weight: bold;
 }
+
+.socialLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid theme(--color-black);
+  color: theme(--color-black);
+  font-size: 1.25rem;
+  transition: background-color 0.4s ease, color 0.5s ease;
+}
+
+.socialLink:hover {
+  background-color: theme(--color-black);
+  border-color: none;
+  color: theme(--color-white);
+  scale: 1.1;
+  transition: scale 0.4s ease;
+}
