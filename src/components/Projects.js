@@ -1,79 +1,103 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import Image from "next/image"; // Using Next.js Image component for optimization
 
 const projects = [
     {
         number: '1/2',
         title: 'Portfolio',
-        description: 'A comprehensive skincare guide featuring the full routine steps, products catered to your needs, and an actives glossary.',
-        imageUrl: ''
+        description: 'My personal space on the web to showcase my skills, projects, and journey as a developer and designer.',
+        imageUrl: '/Auralyst.png'
     },
     {
         number: '2/2',
         title: 'Auralyst',
-        description: 'A comprehensive skincare guide featuring the full routine steps, products catered to your needs, and an actives glossary.',
-        imageUrl: ''
+        description: 'A comprehensive skincare guide featuring routine steps, curated products, and an actives glossary.',
+        imageUrl: '/Auralyst.png'
     }
 ];
 
-// Accept the shared scrollYProgress from page.js
-export default function Projects() {
-  const containerRef = useRef(null);
-
-  // This is for the animations *within* the Projects section
-  const { scrollYProgress: projectsScrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  });
-
-  // 👇 THESE ARE THE KEY CHANGES 👇
-  // Use the HERO'S scroll progress to control the visibility of the ENTIRE projects section.
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  });
-
-  // Your existing animations for the title and slides
-  const titleScale = useTransform(projectsScrollYProgress, [0, 0.2], [0.5, 1]);
-  const titleOpacity = useTransform(projectsScrollYProgress, [0, 0.2], [0, 1]);
-  const titleY = useTransform(projectsScrollYProgress, [0, 0.2], [0, 0]);
-
-  return (
-    <motion.section
-      ref={containerRef}
-      className='relative h-[400vh] py-20 px-4'
-    >
-      <div className='sticky h-screen top-0 overflow-hidden'>
-        <motion.h3
-          className='z-1 absolute flex justify-center items-center text-center w-full font-josefin text-6xl font-bold tracking-widest uppercase'
-          style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
+function ProjectSlide({ project, opacity, scale, y }) {
+    return (
+        <motion.div
+            className="absolute inset-0 flex flex-col justify-center items-center text-center"
+            style={{ scale, opacity, y }}
         >
-          Projects
-        </motion.h3>
+            <div className="relative w-full max-w-[75%] aspect-3/2 border-4 border-dashed rounded-2xl p-4 mb-8 cursor-pointer">
+                <Image
+                    src={project.imageUrl} 
+                    alt={`${project.title} project screenshot`} 
+                    fill 
+                    className='object-cover rounded-lg' 
+                />
+            </div>
+            <div className="max-w-md space-y-6">
+                <span className="block mb-6 text-base sm:text-xl md:text-2xl text-gray-700 font-redditMono">{project.number}</span>
+                <h3 className="text-3xl sm:text-5xl md:text-6xl font-semibold mb-3">{project.title}</h3>
+                <p className="text-base sm:text-lg md:text-xl text-gray-600">{project.description}</p>
+                <button type="button" className="py-2 px-5 text-lg md:text-xl font-redditMono bg-purple cursor-pointer">
+                    View Project
+                </button>
+            </div>
+        </motion.div>
+    );
+}
 
-        {projects.map((project, i) => {
-          const start = 0.1 + i * 0.2;
-          const end = start + 0.2;
-          const scale = useTransform(projectsScrollYProgress, [start, end], [0.8, 1]);
+export default function ProjectsSection() {
+    const targetRef = useRef(null);
 
-          return (
-            <motion.div key={i} className='z-2 sticky flex flex-col justify-center items-center top-0 h-screen w-full' style={{ scale }}>
-              <div className='flex flex-col items-center w-full p-4'>
-                <div className='w-full max-w-[500px] aspect-[3/2] border-2 rounded-4xl p-4 mb-6 bg-black'>
-                  <img src={project.imageUrl} alt={`${project.title} project screenshot`} className='w-full h-full object-contain rounded-2xl' />
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ['start end', 'end end'] 
+    });
+    
+    const animationStartPoint = 0.15;
+    const animationEndPoint = 1;
+
+    const animationProgress = useTransform(
+        scrollYProgress,
+        [animationStartPoint, animationEndPoint],
+        [0, 1]
+    );
+
+    const titleOpacity = useTransform(animationProgress, [0, 0.15, 0.25, 0.35], [0, 1, 1, 0]);
+    const titleScale = useTransform(animationProgress, [0, 0.15, 0.25, 0.35], [0.7, 1, 1, 0.7]);
+    const titleY = useTransform(animationProgress, [0, 0.15, 0.25, 0.35], [500, 0, 0, -500]);
+
+    const projectsStart = 0.35;
+    const projectsEnd = 1;
+    const projectChapterDuration = (projectsEnd - projectsStart) / projects.length;
+
+    return (
+        <section ref={targetRef} className="relative h-[400vh] bg-gray-100">
+            <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+                <div className="relative w-full max-w-4xl mx-auto px-4">
+                    <motion.div
+                        style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
+                        className="absolute inset-0 flex items-center justify-center"
+                    >
+                        <h3 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider uppercase">
+                            Projects
+                        </h3>
+                    </motion.div>
+
+                    {projects.map((project, i) => {
+                        const start = projectsStart + i * projectChapterDuration;
+                        const end = start + projectChapterDuration;
+                        
+                        const fadeInPoint = start + 0.1;
+                        const fadeOutPoint = end - 0.1;
+
+                        const opacity = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [0, 1, 1, 0]);
+                        const scale = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [0.8, 1, 1, 0.8]);
+                        const y = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [500, 0, 0, -500]);
+
+                        return <ProjectSlide key={i} project={project} opacity={opacity} scale={scale} y={y} />;
+                    })}
                 </div>
-                <div className='text-center mas-w-[500px]'>
-                  <span className='block mb-2 text-black font-redditMono'>{project.number}</span>
-                  <h3 className='font-josefin text-5xl mb-3'>{project.title}</h3>
-                  <p className='max-w-[25rem] text-xl leading-8 text-black'>{project.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </motion.section>
-  );
+            </div>
+        </section>
+    );
 }

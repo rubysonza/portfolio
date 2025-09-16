@@ -1,4 +1,3 @@
-// src/components/SocialLinks.js
 "use client";
 
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -8,9 +7,7 @@ import { SiGmail } from 'react-icons/si';
 
 export default function SocialLinks({ animated = false, targetRef }) {
 
-  // --- RENDER THE ANIMATED, FIXED VERSION ---
   if (animated) {
-    // This is all the animation logic you had before
     const { scrollYProgress } = useScroll({
       target: targetRef,
       offset: ["start start", "20% start"],
@@ -21,7 +18,6 @@ export default function SocialLinks({ animated = false, targetRef }) {
 
     return (
       <motion.div
-        // Use a new class for the fixed positioning
         className='z-100 fixed flex justify-center items-center w-full gap-4 bottom-[2rem]'
         style={{ opacity, y }}
       >
@@ -38,7 +34,7 @@ export default function SocialLinks({ animated = false, targetRef }) {
     );
   }
 
-  // --- RENDER THE SIMPLE, STATIC VERSION (FOR THE FOOTER) ---
+  // FOOTER
   return (
     <div className='z-100 flex justify-center items-center w-full gap-4'>
       <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className='socialLink'>

@@ -11,7 +11,7 @@ function ImageAndRotatingText({ scrollYProgress }) {
     const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
     const imageY = useTransform(scrollYProgress, [0, 1], [0, -10]);
     const imageX = useTransform(scrollYProgress, [0, 1], [0, 800]);
-    const imageRotate = useTransform(scrollYProgress, [0, 1], [0, 90]);
+    const imageRotate = useTransform(scrollYProgress, [0, 1], [0, 110]);
 
     return (
         <motion.div

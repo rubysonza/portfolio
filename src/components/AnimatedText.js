@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 
-// You can move the variants here to keep them with their component
 const containerVariants = {
   hidden: {},
   visible: {
