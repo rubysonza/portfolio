@@ -2,11 +2,12 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import TextShuffle from "@/components/TextShuffle";
 import { FiMapPin } from "react-icons/fi";
 import { RiGraduationCapLine } from "react-icons/ri";
 import { MdOutlineFileDownload } from "react-icons/md";
 
-export default function About() {
+export default function AboutSection() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -61,7 +62,7 @@ export default function About() {
             <motion.a
               href="/ruby-sonza-resume.pdf"
               target="_blank"
-              className="inline-flex items-center gap-2 py-2 px-4 md:px-5 bg-purple font-redditMono text-base md:text-lg font-bold text-white tracking-widest"
+              className="inline-flex items-center gap-2 py-2 px-4 md:px-5 bg-purple font-redditMono text-base md:text-lg font-bold text-white tracking-widest uppercase"
               style={{ opacity: buttonOpacity, y: buttonY }}
             >
               Resume <MdOutlineFileDownload className="text-2xl" />

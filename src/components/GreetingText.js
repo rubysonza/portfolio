@@ -12,8 +12,17 @@ const containerVariants = {
 };
 
 const letterVariants = {
-  hidden: { opacity: 0, y: "100%" },
-  visible: { opacity: 1, y: "0%", transition: { duration: 0.4, ease: "easeOut" } },
+  hidden: { 
+    opacity: 0, 
+    y: "100%" 
+  },
+  visible: { 
+    opacity: 1, 
+    y: "0%", 
+    transition: { 
+      duration: 0.4, 
+      ease: "easeOut" } 
+    },
 };
 
 export default function AnimatedText({ text, className }) {

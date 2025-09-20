@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import RotatingText from "./RotatingText";
-import AnimatedText from "./AnimatedText";
+import GreetingText from "./GreetingText";
 
 function ImageAndRotatingText({ scrollYProgress }) {
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
@@ -17,7 +17,7 @@ function ImageAndRotatingText({ scrollYProgress }) {
         <motion.div
             initial={{ opacity: 0, scale: 0.2 }}
             animate={{ opacity: 1, scale: 1, transition: { duration: 0.5, ease: "backInOut" } }}
-            className="absolute flex justify-center items-center p-4 top-20 right-4"
+            className="absolute flex justify-center items-center p-4 top-20 lg:top-12 right-4"
         >
             <motion.div
                 style={{ opacity, scale: imageScale, y: imageY, x: imageX, rotate: imageRotate }}
@@ -30,7 +30,7 @@ function ImageAndRotatingText({ scrollYProgress }) {
                         height={300}
                         priority
                         className="pt-3 object-contain rounded-full border-8 border-solid border-black
-                                w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[300px] lg:h-[300px]"
+                                w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[380px] lg:h-[380px]"
                     />
                 </div>
 
@@ -83,29 +83,30 @@ function Greeting({ scrollYProgress }) {
                 variants={greetingContainerVariants}
                 initial="hidden"
                 animate="visible"
-                className="flex flex-col absolute p-10 bottom-[5%] left-0 font-bold text-[3rem] md:text-[3.5rem] lg:text-[4rem]"
+                className="flex flex-col absolute py-3 px-10 bottom-0 left-0 font-bold text-[3rem] md:text-[3.5rem] lg:text-[5rem]"
                 style={{ opacity }}
             >
-                <motion.div
-                    variants={wordVariants}
-                    style={{ y: heyY, x: heyX, scale: textScale }}
-                >
-                    <AnimatedText text="Hey," />
-                </motion.div>
+                    <motion.div
+                        variants={wordVariants}
+                        style={{ y: heyY, x: heyX, scale: textScale }}
+                    >
+                        <GreetingText text="Hey," className="" />
+                    </motion.div>
 
                 <div className="flex gap-5">
                     <motion.div
                         variants={wordVariants}
                         style={{ y: imY, x: imX, scale: textScale }}
                     >
-                        <AnimatedText text="I&apos;m" />
+                        <GreetingText text="I&apos;m" className="" />
                     </motion.div>
+                
 
                     <motion.div
                         variants={wordVariants}
                         style={{ y: rubyY, x: rubyX, scale: textScale }}
                     >
-                        <AnimatedText text="Ruby" className="text-purple" />
+                        <GreetingText text="Ruby" className="text-purple " />
                     </motion.div>
                 </div>
             </motion.div>
@@ -124,9 +125,10 @@ export default function Hero() {
         <section ref={ref} className="relative w-full h-[100vh] overflow-hidden">
             <div className="h-screen flex items-center justify-center">
                 <div className="relative inset-0 flex justify-center items-center h-full w-full
-                                max-h-[500px] max-w-[450px] md:max-h-[550px] md:max-w-[550px] lg:max-w-[650px]">
-                    <ImageAndRotatingText scrollYProgress={scrollYProgress} />
+                                max-h-[450px] max-w-[450px] sm:max-h-[500px] md:max-h-[550px] md:max-w-[575px] lg:max-h-[650px] lg:max-w-[720px]">
                     <Greeting scrollYProgress={scrollYProgress} />
+                    <ImageAndRotatingText scrollYProgress={scrollYProgress} />
+                    
 
                 </div>
             </div>

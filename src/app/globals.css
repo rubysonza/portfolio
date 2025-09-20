@@ -9,17 +9,6 @@
   --color-purple: #9174FF;
 }
 
-:root {
-  --background-white: #FFF9F4;
-  --background-black: #232323;
-  --text-black: #232323;
-  --text-white: #FFF9F4;
-  --accent-purple: #9174FF;
-  --subtle-text-gray: #505050;
-  --border-black: #232323;
-}
-
-
 body {
   margin: 0;
   padding: 0;
@@ -29,26 +18,29 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
 
-/* HEADER navbar links */
 .desktopNav a {
-    font-family: var(--font-reddit-mono);
+    font-family: theme(--font-redditMono);
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: theme(--color-white);
-    background-color: theme(--color-black);
-    padding: 4px 8px;
+    letter-spacing: 1.5px;
+    color: var(--color-white);
 }
 
 h2 {
   font-size: 2rem;
   font-weight: bold;
+}
+
+h3 {
+  font-family: var(--font-josefin);
+  color: var(--color-black);
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .socialLink {
@@ -57,10 +49,10 @@ h2 {
   align-items: center;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
+  border-radius: 100%;
   border: 2px solid theme(--color-black);
   color: theme(--color-black);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   transition: background-color 0.4s ease, color 0.5s ease;
 }
 
@@ -68,6 +60,14 @@ h2 {
   background-color: theme(--color-black);
   border-color: none;
   color: theme(--color-white);
-  scale: 1.1;
+  scale: 1.2;
   transition: scale 0.4s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .socialLink {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
 }
