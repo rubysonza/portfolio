@@ -4,23 +4,34 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Image from "next/image";
 import { projects } from '@/data/projectsPageData';
+import { Icon } from "@iconify/react";
+
 
 
 function ProjectSlide({ project, opacity, scale, y }) {
+
+    const cardVariants = {
+        initial: { scale: 1 },
+        hover: { scale: 1.03, y: -20, transition: { type: 'spring', stiffness: 200 } }
+    }
     return (
         <motion.div
-            className="absolute inset-0 flex flex-col justify-center items-center text-center"
+            className="absolute inset-0 flex flex-col justify-center items-center text-center gap-y-0 sm:gap-y-3"
             style={{ scale, opacity, y }}
         >
-            <div className="flex flex-col w-full max-w-[85%] gap-3">
-                <div className="relative w-full aspect-3/2 border-4 rounded-2xl shadow-lg inset-shadow-black/40 cursor-pointer">
-                    <Image
-                        src={project.imageUrl} 
-                        alt={`${project.title} project screenshot`} 
-                        fill 
-                        className='object-cover rounded-2xl' 
+            <div className="flex flex-col w-full max-w-[85%] gap-2 sm:gap-3">
+                <motion.div
+                    variants={cardVariants}
+                    initial="initial"
+                    whileHover="hover"
+                    className="relative w-full aspect-3/2">
+                    <img
+                        src={project.image} 
+                        alt={`${project.title} project screenshot`}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className='object-cover border-3 dark:border-none shadow-[0_0_5px] rounded-2xl cursor-pointer'
                     />
-                </div>
+                </motion.div>
 
                 <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-4">
                     {project.tags.map((tag, i) => (
@@ -31,12 +42,14 @@ function ProjectSlide({ project, opacity, scale, y }) {
                 </div>
             </div>
 
-            <div className="flex flex-col justify-center items-center max-w-md space-y-6">
-                <span className="block mb-7 text-base sm:text-xl md:text-2xl text-gray-700 font-redditMono">{project.number}</span>
-                <h5 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-2 md:mb-5">{project.title}</h5>
-                <p className="text-center text-base sm:text-lg md:text-xl text-gray-600 max-w-[80%] md:max-w-full">{project.description}</p>
-                <button type="button" className="py-2 px-5 text-lg md:text-xl font-redditMono bg-purple cursor-pointer uppercase">
-                    View Project
+            <div className="flex flex-col justify-center items-center max-w-lg gap-y-3 sm:gap-y-7">
+                <span className="block text-base sm:text-xl md:text-2xl font-redditMono">{project.number}</span>
+                <div className="flex flex-col">
+                    <h5 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-3">{project.title}</h5>
+                    <p className="px-12 md:px-0 text-center text-sm sm:text-base md:text-lg lg:text-xl font-redditMono max-w-full">{project.description}</p>
+                </div>
+                <button type="button" className="flex flex-row items-center py-1.5 px-3 md:py-2.5 md:px-5 gap-2 text-sm sm:text-base md:text-lg text-center font-redditMono tracking-widest font-bold bg-purple uppercase cursor-pointer">
+                    View Case Study <Icon icon="mdi:file-document-box-search-outline" className="w-6.5 h-6.5" />
                 </button>
             </div>
         </motion.div>
@@ -76,9 +89,9 @@ export default function ProjectsSection() {
                         style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
                         className="absolute inset-0 flex items-center justify-center"
                     >
-                        <h5 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider uppercase">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider uppercase">
                             Projects
-                        </h5>
+                        </h2>
                     </motion.div>
 
                     {projects.map((project, i) => {

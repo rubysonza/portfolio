@@ -1,24 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-
-const wordVariants = {
-  initial: {
-    backgroundColor: "var(--color-black)",
-    borderRadius: "0rem",
-    padding: "4px 10px",
-  },
-  hover: {
-    backgroundColor: "var(--color-purple)",
-    borderRadius: "2rem",
-    padding: "4px 10px",
-    transition: {
-      duration: 0.3,
-      ease: "easeInOut",
-      staggerChildren: 0.05,
-    },
-  },
-};
+import { useTheme } from "next-themes";
 
 const letterShuffleVariants = {
   initial: {
@@ -35,10 +18,30 @@ const letterShuffleVariants = {
 
 
 export default function NavAnimation({ text, className }) {
+  const { theme } = useTheme();
   const letters = Array.from(text);
+
+  const wordVariants = {
+    initial: {
+      backgroundColor: theme === 'dark' ? "var(--color-white)" : "var(--color-black)",
+      borderRadius: "0rem",
+      padding: "4px 10px",
+    },
+    hover: {
+      backgroundColor: "var(--color-purple)",
+      borderRadius: "2rem",
+      padding: "4px 10px",
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut",
+        staggerChildren: 0.05,
+      },
+    },
+  };
 
   return (
     <motion.div
+      key={theme}
       className={className}
       variants={wordVariants}
       initial="initial"

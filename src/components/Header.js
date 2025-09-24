@@ -1,40 +1,20 @@
-import Link from "next/link";
-import { RiMenu4Fill } from "react-icons/ri";
-import { PiLampPendant } from "react-icons/pi";
-import TextShuffle from "@/components/TextShuffle";
+"use client";
 
+import NavDesktop from "./NavDesktop";
+import NavMobile from "./NavMobile";
 
 export default function Header() {
-    return (
-      <header className="z-1000 fixed top-0 left-0 w-full h-auto bg-none py-8 px-5 text-black">
-        <div className="flex justify-between items-center max-w-full my-0 mx-auto
-                        md:grid md:grid-cols-3">
-            <Link href="/" className="flex justify-self-start items-center font-josefin font-extrabold text-lg lowercase cursor-pointer">
-                Ruby Sonza
-            </Link>
+  return (
+    <header className="z-50 fixed top-0 left-0 w-full h-auto bg-transparent py-8 px-5 text-black dark:text-white">
+      {/* Renders NavDesktop but hides it on small screens */}
+      <div className="hidden md:block">
+        <NavDesktop />
+      </div>
 
-            <nav className="desktopNav hidden md:flex md:justify-self-center md:gap-8">
-                <a href="/about" className="">
-                    <TextShuffle text="About" />
-                </a>
-                <a href="/projects" className="">
-                    <TextShuffle text="Projects" />
-                </a>
-                <a href="/contact" className="">
-                    <TextShuffle text="Contact" />
-                </a>
-            </nav>
-
-            <button className="hidden md:flex md:justify-self-end cursor-pointer" aria-label="Light or dark mode">
-                <PiLampPendant size={25} strokeWidth={5}/>
-            </button>
-
-            <div className="flex md:hidden">
-                <button className="border-none cursor-pointer text-xl" aria-label="Open menu">
-                    <RiMenu4Fill size={25} strokeWidth={0.5}/>
-                </button>
-            </div>
-        </div>
-      </header>
-    );
+      {/* Renders NavMobile but hides it on medium and larger screens */}
+      <div className="block md:hidden">
+        <NavMobile />
+      </div>
+    </header>
+  );
 }

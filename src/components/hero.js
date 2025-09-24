@@ -29,7 +29,7 @@ function ImageAndRotatingText({ scrollYProgress }) {
                         width={300}
                         height={300}
                         priority
-                        className="pt-3 object-contain rounded-full border-8 border-solid border-black
+                        className="pt-3 object-contain rounded-full border-8 border-solid border-black dark:border-white dark:bg-white
                                 w-[210px] h-[210px] sm:w-[240px] sm:h-[240px] md:w-[280px] md:h-[280px] lg:w-[380px] lg:h-[380px]"
                     />
                 </div>

@@ -24,7 +24,7 @@ export const about = [
             { name: 'GSAP', icon: 'simple-icons:gsap' },
             { name: 'NextJS', icon: 'devicon:nextjs' },
             { name: 'React', icon: 'devicon:react' },
-            { name: 'TailwindCSS', icon: 'devicon:tailwindcss' },
+            { name: 'Tailwind CSS', icon: 'devicon:tailwindcss' },
             { name: 'Git', icon: 'devicon:git' },
             { name: 'Python', icon: 'devicon:python' },
             { name: 'Figma', icon: 'devicon:figma' },

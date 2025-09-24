@@ -32,7 +32,7 @@ export default function RotatingText() {
             a 75,75 0 1,1 -150,0
           "
         />
-        <text className='font-redditMono text-[10px] tracking-[2.4px] fill-gray lowercase'>
+        <text className='font-redditMono text-[10px] tracking-[2.4px] fill-black dark:fill-gray-200 lowercase'>
           <textPath href="#circlePath" startOffset="3%">
             web designer and developer • web designer and developer •
           </textPath>
