@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import Image from "next/image";
@@ -8,7 +9,7 @@ import { Icon } from "@iconify/react";
 
 
 
-function ProjectSlide({ project, opacity, scale, y }) {
+function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
 
     const cardVariants = {
         initial: { scale: 1 },
@@ -17,7 +18,7 @@ function ProjectSlide({ project, opacity, scale, y }) {
     return (
         <motion.div
             className="absolute inset-0 flex flex-col justify-center items-center text-center gap-y-0 sm:gap-y-3"
-            style={{ scale, opacity, y }}
+            style={{ scale, opacity, y, pointerEvents }}
         >
             <div className="flex flex-col w-full max-w-[85%] gap-2 sm:gap-3">
                 <motion.div
@@ -48,9 +49,11 @@ function ProjectSlide({ project, opacity, scale, y }) {
                     <h5 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-3">{project.title}</h5>
                     <p className="px-12 md:px-0 text-center text-sm sm:text-base md:text-lg lg:text-xl font-redditMono max-w-full">{project.description}</p>
                 </div>
-                <button type="button" className="flex flex-row items-center py-1.5 px-3 md:py-2.5 md:px-5 gap-2 text-sm sm:text-base md:text-lg text-center font-redditMono tracking-widest font-bold bg-purple uppercase cursor-pointer">
-                    View Case Study <Icon icon="mdi:file-document-box-search-outline" className="w-6.5 h-6.5" />
-                </button>
+                <Link href={`/projects/${project.slug}`}>
+                    <button type="button" className="flex flex-row items-center py-1.5 px-3 md:py-2.5 md:px-5 gap-2 text-sm sm:text-base md:text-lg text-center font-redditMono tracking-widest font-bold bg-purple uppercase cursor-pointer">
+                        View Case Study <Icon icon="mdi:file-document-box-search-outline" className="w-6.5 h-6.5" />
+                    </button>
+                </Link>
             </div>
         </motion.div>
     );
@@ -105,7 +108,9 @@ export default function ProjectsSection() {
                         const scale = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [0.7, 1, 1, 0.7]);
                         const y = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [500, 0, 0, -500]);
 
-                        return <ProjectSlide key={i} project={project} opacity={opacity} scale={scale} y={y} />;
+                        const pointerEvents = useTransform(opacity, (value) => (value > 0 ? 'auto' : 'none'));
+
+                        return <ProjectSlide key={i} project={project} opacity={opacity} scale={scale} y={y} pointerEvents={pointerEvents} />;
                     })}
                 </div>
             </div>

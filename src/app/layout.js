@@ -1,6 +1,5 @@
 import { Josefin_Sans, Reddit_Mono } from 'next/font/google';
 import './globals.css';
-import PageTransition from '@/components/animations/PageTransition';
 import Header from '@/components/Header';
 import { Providers } from '@/components/Providers';
 
@@ -27,9 +26,7 @@ export default function RootLayout({ children }) {
       <body className="bg-white dark:bg-black text-black dark:text-white transition-colors duration-400">
         <Providers>
           <Header />
-          <PageTransition>
             {children}
-          </PageTransition>
         </Providers>
       </body>
     </html>

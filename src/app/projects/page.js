@@ -1,6 +1,7 @@
 "use client";
 
 import {} from "react";
+import Link from 'next/link';
 import { motion } from "framer-motion";
 import { projects } from '@/data/projectsPageData';
 import { RiExternalLinkLine } from "react-icons/ri";
@@ -34,11 +35,11 @@ function ProjectCard({ project }) {
                     <h4 className="flex font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{project.title}</h4>
 
                     <div className="flex flex-row text-purple gap-3.5">
-                        <a href="/">
+                        <Link href={`/projects/${project.slug}`}>
                             <Icon icon="mdi:file-document-box-search-outline" className="w-6 h-6 sm:w-8 sm:h-8" />
-                        </a>
+                        </Link>
                         <a href={project.link} target="_blank">
-                            <RiExternalLinkLine strokeWidth="0" className="w-6 h-6 sm:w-8 sm:h-8" />
+                            <RiExternalLinkLine strokeWidth="0" className="w-6 h-6 sm:w-8 sm:h-8" aria-label="View website through an external link" />
                         </a>
                     </div>
                 </div>

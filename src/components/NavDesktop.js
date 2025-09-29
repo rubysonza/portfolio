@@ -11,7 +11,7 @@ export default function DesktopNav() {
   return (
     <div className="grid grid-cols-3 items-center max-w-full my-0 mx-auto">
       {/* Column 1: Logo */}
-      <Link href="/" className="flex justify-self-start items-center font-josefin font-extrabold text-lg lowercase">
+      <Link href="/" className="flex justify-self-start items-center font-josefin font-extrabold text-lg lowercase" aria-label="Go to home page">
         Ruby Sonza
       </Link>
 

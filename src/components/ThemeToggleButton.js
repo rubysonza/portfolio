@@ -17,9 +17,9 @@ export const ThemeToggleButton = () => {
     <motion.button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="text-purple cursor-pointer"
-      whileHover={{ scale: 1.3, rotate: 270 }}
+      whileHover={{ scale: 1.2, rotate: 270 }}
       whileTap={{ scale: 0.9 }}
-      transition={{ type: "spring", stiffness: 500, damping: 150 }}
+      transition={{ type: "spring", stiffness: 600, damping: 100 }}
     >
       {resolvedTheme === "dark" ? (
         <RiMoonFill className="w-7.5 h-7.5" />

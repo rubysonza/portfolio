@@ -5,7 +5,8 @@ export const projects = [
         title: 'Portfolio',
         description: 'My personal space on the web to showcase my skills, projects, and journey as a designer and developer.',
         image: '/Portfolio.webp',
-        link: '/'
+        link: '/',
+        slug: 'portfolio'
     },
     {
         tags: ['HTML', 'CSS', 'Tailwind CSS', 'JavaScript', 'GSAP'],
@@ -13,6 +14,7 @@ export const projects = [
         title: 'Auralyst',
         description: 'A comprehensive skincare guide featuring routine steps, curated products, and an actives glossary.',
         image: '/Auralyst.webp',
-        link: 'https://rubysonza.github.io/auralyst/'
+        link: 'https://rubysonza.github.io/auralyst/',
+        slug: 'auralyst'
     },
 ];
