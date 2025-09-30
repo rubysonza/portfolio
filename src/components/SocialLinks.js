@@ -5,18 +5,32 @@ import { FaLinkedinIn } from 'react-icons/fa';
 import { TbBrandGithub } from 'react-icons/tb';
 import { SiGmail } from 'react-icons/si';
 
-export default function SocialLinks({ animated = false, targetRef, className = ''
- }) {
+export default function SocialLinks({ animated = false, targetRef, className = '' }) {
+
+  const linkVariants = {
+    rest: {
+      scale: 1,
+    },
+    hover: {
+      scale: 1.2,
+      transition: {
+        type: "spring",
+        duration: 100,
+        stiffness: 200,
+        damping: 15
+      },
+    },
+  };
 
   const links = (
     <>
-      <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className='socialLink border-2 border-black dark:border-white hover:bg-black dark:hover:bg-white'>
+      <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className='socialLink border-2 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'>
         <FaLinkedinIn />
       </a>
-      <a href="https://github.com/rubysonza" target="_blank" rel="noopener noreferrer" aria-label="Link to GitHub profile" className='socialLink border-2 border-black dark:border-white hover:fill-black'>
+      <a href="https://github.com/rubysonza" target="_blank" rel="noopener noreferrer" aria-label="Link to GitHub profile" className='socialLink border-2 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'>
         <TbBrandGithub />
       </a>
-      <a href="mailto:rubyabayasonza@gmail.com" aria-label="Send an email" className='socialLink border-2 border-black dark:border-white hover:fill-black'>
+      <a href="mailto:rubyabayasonza@gmail.com" aria-label="Send an email" className='socialLink border-2 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'>
         <SiGmail />
       </a>
     </>

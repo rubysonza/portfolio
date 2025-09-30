@@ -2,10 +2,9 @@
 
 import Link from 'next/link';
 import { useRef } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { projects } from '@/data/projectsPageData';
-import { Icon } from "@iconify/react";
+import { FiArrowRight } from "react-icons/fi";
 
 
 
@@ -13,34 +12,56 @@ function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
 
     const cardVariants = {
         initial: { scale: 1 },
-        hover: { scale: 1.03, y: -20, transition: { type: 'spring', stiffness: 200 } }
-    }
+        hover: { scale: 1.02, y: -20, transition: { type: 'spring', stiffness: 200, damping: 15 } },
+    };
+
+    const overlayVariants = {
+        initial: { opacity: 0 },
+        hover: { opacity: 1, transition: { duration: 0.3 } }
+    };
+
+    const imageVariants = {
+        initial: { filter: "blur(0px) brightness(100%)", scale: 1 },
+        hover: { filter: "blur(1px) brightness(75%)", scale: 1.03, transition: { duration: 0.3 } }
+    };
+
     return (
         <motion.div
             className="absolute inset-0 flex flex-col justify-center items-center text-center gap-y-0 sm:gap-y-3"
             style={{ scale, opacity, y, pointerEvents }}
         >
-            <div className="flex flex-col w-full max-w-[85%] gap-2 sm:gap-3">
-                <motion.div
-                    variants={cardVariants}
-                    initial="initial"
-                    whileHover="hover"
-                    className="relative w-full aspect-3/2">
-                    <img
-                        src={project.image} 
-                        alt={`${project.title} project screenshot`}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className='object-cover border-3 dark:border-none shadow-[0_0_5px] rounded-2xl cursor-pointer'
-                    />
-                </motion.div>
+            <div className="flex flex-col w-full max-w-[85%] gap-2 sm:gap-7">
+                <Link href={`/projects/${project.slug}`} passHref>
+                    <motion.div
+                        variants={cardVariants}
+                        initial="initial"
+                        whileHover="hover"
+                        className="relative w-full aspect-3/2">
+                        <motion.img
+                            src={project.image} 
+                            alt={`${project.title} project screenshot`}
+                            variants={imageVariants}
+                            className='object-cover border-3 dark:border-none shadow-[0_0_5px] rounded-2xl cursor-pointer'
+                        />
 
-                <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-4">
+                        <motion.div
+                            variants={overlayVariants}
+                            className="absolute inset-0 flex items-center justify-center"
+                        >
+                            <button className="relative flex justify-center items-center text-center inset-0 py-4 px-5 gap-2 rounded-full hover:scale-105 transition-transform duration-500 bg-purple text-white text-3xl font-bold tracking-wider uppercase cursor-pointer">
+                                View Case Study <FiArrowRight />
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                </Link>
+
+                <motion.div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-4">
                     {project.tags.map((tag, i) => (
                         <span key={i} className="px-2 py-0.5 text-xs sm:text-sm md:text-base font-redditMono border-2 border-purple text-purple">
                             {tag}
                         </span>
                     ))}
-                </div>
+                </motion.div>
             </div>
 
             <div className="flex flex-col justify-center items-center max-w-lg gap-y-3 sm:gap-y-7">
@@ -49,11 +70,6 @@ function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
                     <h5 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-3">{project.title}</h5>
                     <p className="px-12 md:px-0 text-center text-sm sm:text-base md:text-lg lg:text-xl font-redditMono max-w-full">{project.description}</p>
                 </div>
-                <Link href={`/projects/${project.slug}`}>
-                    <button type="button" className="flex flex-row items-center py-1.5 px-3 md:py-2.5 md:px-5 gap-2 text-sm sm:text-base md:text-lg text-center font-redditMono tracking-widest font-bold bg-purple uppercase cursor-pointer">
-                        View Case Study <Icon icon="mdi:file-document-box-search-outline" className="w-6.5 h-6.5" />
-                    </button>
-                </Link>
             </div>
         </motion.div>
     );

@@ -43,7 +43,7 @@ export default async function ProjectPage({ params }) {
                     </div>
                 </header>
 
-                <div className="mx-5 mb-12 md:mb-16">
+                <div className="mx-5 mb-12 md:mb-5">
                     <img
                         src={project.image}
                         alt={`${project.title} project screenshot`}
@@ -55,8 +55,7 @@ export default async function ProjectPage({ params }) {
 
                 <article className="
                     mx-5 md:mx-12 pb-24
-                    prose-h4:mt-12
-                    prose-p:leading-9 prose-p:indent-7
+                    prose-p:leading-9 prose-p:mb-15
                 ">
                     <MDXRemote source={content} />
                 </article>

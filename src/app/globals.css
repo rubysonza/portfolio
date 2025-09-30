@@ -21,7 +21,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   cursor: grab;
 }
@@ -100,6 +100,11 @@ p {
   font-family: theme(--font-redditMono);
 }
 
+button {
+  font-family: theme(--font-redditMono);
+  text-transform: uppercase;
+}
+
 .socialLink {
   display: flex;
   justify-content: center;
@@ -109,14 +114,6 @@ p {
   border-radius: 100%;
   font-size: 1.3rem;
   transition: background-color 0.4s ease, color 0.5s ease;
-}
-
-.socialLink:hover {
-  background-color: theme(--color-black);
-  border-color: none;
-  color: theme(--color-white);
-  scale: 1.2;
-  transition: scale 0.4s ease;
 }
 
 @media screen and (min-width: 768px) {

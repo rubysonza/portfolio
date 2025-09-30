@@ -2,10 +2,9 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import TextShuffle from "@/components/TextShuffle";
-import { FiMapPin } from "react-icons/fi";
-import { RiGraduationCapLine } from "react-icons/ri";
-import { RiExternalLinkLine } from "react-icons/ri";
+import ActionButton from "@/components/ActionButton";
+import { FiMapPin, FiExternalLink } from "react-icons/fi";
+import { PiGraduationCap } from "react-icons/pi";
 
 
 export default function AboutSection() {
@@ -26,7 +25,6 @@ export default function AboutSection() {
 
   const containerScale = useTransform(scrollYProgress, [0.75, 1], [1, 0.8]);
 
-  
 
   return (
     <section ref={ref} className="relative h-[150vh]">
@@ -54,21 +52,18 @@ export default function AboutSection() {
               <span>Bayonne, NJ</span>
             </motion.li>
             <motion.li className="flex items-center gap-3 text-base md:text-xl">
-              <RiGraduationCapLine className="text-purple text-xl md:text-2xl" />
+              <PiGraduationCap className="w-6 h-6 text-purple text-xl md:text-2xl" />
               <span>B.A. of Information Technology</span>
             </motion.li>
           </motion.ul>
 
-          <button>
-            <motion.a
+          <motion.div style={{ opacity: buttonOpacity, y: buttonY }}>
+            <ActionButton 
               href="/Ruby_Sonza_Resume.pdf"
-              target="_blank"
-              className="inline-flex items-center gap-2 py-2 px-4 md:px-5 bg-purple font-redditMono text-base md:text-lg font-bold tracking-widest uppercase"
-              style={{ opacity: buttonOpacity, y: buttonY }}
-            >
-              Resume <RiExternalLinkLine strokeWidth="0.5" className="w-5 h-5" />
-            </motion.a>
-          </button>
+              text="Resume"
+              
+            />
+          </motion.div>
         </motion.div>
 
       </div>
