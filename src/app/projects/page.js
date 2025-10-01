@@ -38,7 +38,7 @@ function ProjectCard({ project }) {
                     src={project.image} 
                     alt={`${project.title} project screenshot`}
                     variants={imageVariants}
-                    className='object-cover border-3 dark:border-none shadow-[0_0_5px] rounded-2xl cursor-pointer'
+                    className='object-cover border-3 dark:border-none shadow-[0_0_5px] rounded-2xl'
                 />
 
                 <motion.div

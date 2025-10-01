@@ -8,11 +8,16 @@ import { SiGmail } from 'react-icons/si';
 export default function SocialLinks({ animated = false, targetRef, className = '' }) {
 
   const linkVariants = {
-    rest: {
+    initial: {
       scale: 1,
+      transition: {
+        type: "tween",
+        ease: "backOut",
+        duration: 0.4,
+      },
     },
     hover: {
-      scale: 1.2,
+      scale: 1.15,
       transition: {
         type: "spring",
         duration: 100,
@@ -24,15 +29,38 @@ export default function SocialLinks({ animated = false, targetRef, className = '
 
   const links = (
     <>
-      <a href="https://www.linkedin.com/in/ruby-sonza" target="_blank" rel="noopener noreferrer" aria-label="Link to LinkedIn profile" className='socialLink border-2 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'>
+      <motion.a 
+        href="https://www.linkedin.com/in/ruby-sonza"
+        target="_blank" rel="noopener noreferrer"
+        aria-label="Link to LinkedIn profile"
+        variants={linkVariants}
+        initial="initial"
+        whileHover="hover"
+        className='socialLink border-2 lg:border-3 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'
+      >
         <FaLinkedinIn />
-      </a>
-      <a href="https://github.com/rubysonza" target="_blank" rel="noopener noreferrer" aria-label="Link to GitHub profile" className='socialLink border-2 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'>
+      </motion.a>
+      <motion.a
+        href="https://github.com/rubysonza"
+        target="_blank" rel="noopener noreferrer"
+        aria-label="Link to GitHub profile"
+        variants={linkVariants}
+        initial="initial"
+        whileHover="hover"
+        className='socialLink border-2 lg:border-3 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'
+      >
         <TbBrandGithub />
-      </a>
-      <a href="mailto:rubyabayasonza@gmail.com" aria-label="Send an email" className='socialLink border-2 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'>
+      </motion.a>
+      <motion.a
+        href="mailto:rubyabayasonza@gmail.com"
+        aria-label="Send an email"
+        variants={linkVariants}
+        initial="initial"
+        whileHover="hover"
+        className='socialLink border-2 lg:border-3 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'
+      >
         <SiGmail />
-      </a>
+      </motion.a>
     </>
   );
 

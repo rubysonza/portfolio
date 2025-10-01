@@ -36,6 +36,7 @@ function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
                         variants={cardVariants}
                         initial="initial"
                         whileHover="hover"
+                        whileFocus="hover"
                         className="relative w-full aspect-3/2">
                         <motion.img
                             src={project.image} 

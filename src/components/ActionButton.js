@@ -86,7 +86,7 @@ const ActionButton = ({ href = "#", text = "Click Me", icon: Icon = FiExternalLi
                 className="absolute right-0 translate-x-[100%]"
                 aria-hidden="true"
             >
-                <Icon className="w-5 h-5" />
+                <Icon strokeWidth="2.5" className="w-5 h-5" />
             </motion.span>
         </motion.div>
     </motion.a>
