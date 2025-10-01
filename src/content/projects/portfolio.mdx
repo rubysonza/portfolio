@@ -3,21 +3,66 @@ title: 'Portfolio'
 description: 'My personal space on the web to showcase my skills, projects, and journey as a designer and developer.'
 date: '2025-09-24'
 technologies: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion']
+gallery: [
+    {
+        section: 'The Vision',
+        images: [
+            { src: '/images/portfolio/vision1.webp', alt: 'Figma mockup for home page of portfolio' },
+            { src: '/images/portfolio/vision2.webp', alt: 'Figma mockup for web pages of portfolio' },
+            { src: '/images/portfolio/vision3.webp', alt: 'Color palette explanation for portfolio' },
+            { src: '/images/portfolio/vision4.webp', alt: 'Typography explanation for portfolio' },
+        ]
+    },
+    {
+        section: 'Technical Architecture',
+        images: [
+
+        ]
+    },
+    {
+        section: 'Animating Using Motion',
+        images: [
+
+        ]
+    },
+    {
+        section: 'Inclusive by Design',
+        images: [
+
+        ]
+    },
+    {
+        section: 'Personal Growth',
+        images: [
+
+        ]
+    },
+]
 ---
 
 This portfolio is the product of intentional design and a deep dive into modern web technologies. It was built to be more than a collection of links; it's a carefully considered showcase of my skills, my process, and my philosophy on creating digital experiences that are both engaging and accessible. This case study will walk you through the journey, from the initial design in Figma to the technical challenges and the key features that bring it to life.
 
+<ImageGallery section="The Vision" />
+
 #### The Vision
 This portfolio was conceived as more than just a project showcase; it was a strategic endeavor to create a personal brand statement for recruiters and to master key industry technologies like Next.js and Framer Motion. The guiding design philosophy was a delicate balance between a clean, minimalist aesthetic and playful, engaging animations. I wanted a straightforward, intuitive user experience where my work could take center stage, using animations not as a distraction, but as a tool to inject personality and delight. This vision first took shape in Figma, where I meticulously prototyped layouts, established a clear visual hierarchy, and tested typographic pairings to ensure the final design was both beautiful and highly functional.
+
+<ImageGallery section="Technical Architecture" />
 
 #### Technical Architecture
 The technical foundation of this portfolio was built on intentional, modern architectural choices. I leveraged the Next.js App Router to create a clean, file-based routing system, including the dynamic [slug] route that powers these case study pages. The site’s structure is built on a clear component architecture, separating specialized, single-use components for unique sections like the Hero and Projects from reusable, site-wide components like SocialLinks and Footer to ensure both consistency and maintainability. For the light/dark mode, I implemented a robust theming solution using next-themes combined with React's Context API, providing a seamless and persistent user preference. I also wrote custom hooks like useLockBodyScroll to encapsulate complex logic, demonstrating a commitment to writing clean, DRY (Don't Repeat Yourself) code.
 
+<ImageGallery section="Animating Using Motion" />
+
 #### Animating Using Motion
 My philosophy is that animation must always serve a purpose, and this project was my playground for exploring that idea. The entire home page is a carefully choreographed dance of scroll-based parallax effects, brought to life with Framer Motion's useScroll and useTransform hooks. As the user scrolls, elements like the hero text and image gracefully disperse, providing a clear visual cue to move down the page. This large-scale motion is complemented by delightful micro-interactions that enrich the user experience. The navigation links feature a "Text Shuffle" animation on hover, where each letter animates individually while the background and border-radius smoothly transform. Even the theme toggle icon has a satisfying hover effect, rotating and scaling up to provide tactile feedback.
 
+<ImageGallery section="Inclusive by Design" />
+
 #### Inclusive by Design
 A core tenet of my design process is the belief that a great website is one that everyone can use. To ensure a comfortable viewing experience for all, I implemented a light and dark mode and verified that all text and background color combinations meet a 3:1 contrast ratio. All interactive elements, from navigation links to social media icons, are fully keyboard accessible with clear focus states. Furthermore, I made extensive use of semantic HTML and descriptive aria-label attributes, particularly for icon-only buttons in the mobile navigation and social links, to ensure they are fully understandable to screen reader users.
+
+<ImageGallery section="Personal Growth" />
 
 #### Personal Growth
 This project was a significant step up in my journey as a developer, and it came with invaluable learning experiences. I initially struggled with implementing a seamless sticky scroll animation for the projects section, a challenge that required a deep dive into Framer Motion's animation timeline mapping. A key "aha!" moment came when I refactored the navigation from standard a tags to Next.js's Link component, eliminating jarring page reloads and enabling smooth, client-side transitions. When I compare this portfolio to my earlier Auralyst project, the growth is observable. This project challenged me to think more critically as a developer, moving beyond simply implementing features to making deliberate, thoughtful decisions about everything from component architecture to animation philosophy.

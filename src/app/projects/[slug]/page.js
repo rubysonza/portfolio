@@ -1,8 +1,10 @@
+// src/app/projects/[slug]/page.js
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { projects } from '@/data/projectsPageData';
+import ImageGalleryWrapper from '@/components/ImageGalleryWrapper'; // Import the wrapper
 
 export async function generateStaticParams() {
     const files = fs.readdirSync(path.join(process.cwd(), 'src', 'content/projects'));
@@ -12,21 +14,22 @@ export async function generateStaticParams() {
 }
 
 function getProjectData(slug) {
-    // 2. Find the specific project from your imported data
     const project = projects.find((p) => p.slug === slug);
-
-    // Get the MDX content
     const filePath = path.join(process.cwd(), 'src', 'content/projects', `${slug}.mdx`);
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const { content, data: frontmatter } = matter(fileContent);
-
-    // 3. Return both the project metadata and the MDX content
     return { project, content, frontmatter };
 }
 
 export default async function ProjectPage({ params }) {
     const { slug } = params;
     const { project, content, frontmatter } = getProjectData(slug);
+    
+    // Create a components object to pass to MDXRemote
+    const components = {
+        // Here we are creating a new component that has the gallery data "baked in"
+        ImageGallery: (props) => <ImageGalleryWrapper {...props} gallery={frontmatter.gallery} />,
+    };
 
     return (
         <main className="pt-[6rem] md:pt-[8rem]">
@@ -57,7 +60,7 @@ export default async function ProjectPage({ params }) {
                     mx-5 md:mx-12 pb-24
                     prose-p:leading-9 prose-p:mb-15
                 ">
-                    <MDXRemote source={content} />
+                    <MDXRemote source={content} components={components} />
                 </article>
 
             </div>

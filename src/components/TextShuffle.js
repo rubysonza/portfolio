@@ -23,7 +23,7 @@ export default function NavAnimation({ text, className }) {
 
   const wordVariants = {
     initial: {
-      backgroundColor: theme === 'dark' ? "var(--color-white)" : "var(--color-black)",
+      backgroundColor: "theme(--color-purple)",
       borderRadius: "0rem",
       padding: "4px 10px",
     },

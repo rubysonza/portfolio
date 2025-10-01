@@ -36,7 +36,7 @@ export default function SocialLinks({ animated = false, targetRef, className = '
         variants={linkVariants}
         initial="initial"
         whileHover="hover"
-        className='socialLink border-2 lg:border-3 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'
+        className='socialLink border-2 lg:border-3 border-purple text-purple hover:bg-purple hover:border-purple hover:text-black dark:hover:text-white transition-transform duration-600'
       >
         <FaLinkedinIn />
       </motion.a>
@@ -47,7 +47,7 @@ export default function SocialLinks({ animated = false, targetRef, className = '
         variants={linkVariants}
         initial="initial"
         whileHover="hover"
-        className='socialLink border-2 lg:border-3 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'
+        className='socialLink border-2 lg:border-3 border-purple text-purple hover:bg-purple hover:border-purple hover:text-black dark:hover:text-white transition-transform duration-600'
       >
         <TbBrandGithub />
       </motion.a>
@@ -57,7 +57,7 @@ export default function SocialLinks({ animated = false, targetRef, className = '
         variants={linkVariants}
         initial="initial"
         whileHover="hover"
-        className='socialLink border-2 lg:border-3 border-black dark:border-white hover:text-white hover:bg-black dark:hover:text-black dark:hover:bg-white transition-transform duration-600'
+        className='socialLink border-2 lg:border-3 border-purple text-purple hover:bg-purple hover:border-purple hover:text-black dark:hover:text-white transition-transform duration-600'
       >
         <SiGmail />
       </motion.a>

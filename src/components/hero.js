@@ -90,7 +90,7 @@ function Greeting({ scrollYProgress }) {
                         variants={wordVariants}
                         style={{ y: heyY, x: heyX, scale: textScale }}
                     >
-                        <GreetingText text="Hey," className="" />
+                        <GreetingText text="Hey," />
                     </motion.div>
 
                 <div className="flex gap-5">
@@ -98,7 +98,7 @@ function Greeting({ scrollYProgress }) {
                         variants={wordVariants}
                         style={{ y: imY, x: imX, scale: textScale }}
                     >
-                        <GreetingText text="I&apos;m" className="" />
+                        <GreetingText text="I&apos;m" />
                     </motion.div>
                 
 
@@ -106,7 +106,7 @@ function Greeting({ scrollYProgress }) {
                         variants={wordVariants}
                         style={{ y: rubyY, x: rubyX, scale: textScale }}
                     >
-                        <GreetingText text="Ruby" className="text-purple " />
+                        <GreetingText text="Ruby" className="text-purple" />
                     </motion.div>
                 </div>
             </motion.div>

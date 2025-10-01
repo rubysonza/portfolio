@@ -42,7 +42,7 @@ export default function MobileNav() {
   return (
     <>
       <div className="flex justify-between items-center max-w-full my-0 mx-auto">
-        <Link href="/" className="font-josefin font-extrabold text-lg lowercase z-50">
+        <Link href="/" className="font-josefin text-purple font-extrabold text-lg lowercase z-50">
           Ruby Sonza
         </Link>
 
