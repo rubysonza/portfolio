@@ -17,18 +17,18 @@ const letterShuffleVariants = {
 };
 
 
-export default function NavAnimation({ text, className }) {
+export default function NavAnimation({ text, className, isActive = false }) {
   const { theme } = useTheme();
   const letters = Array.from(text);
 
   const wordVariants = {
     initial: {
-      backgroundColor: "theme(--color-purple)",
+      backgroundColor: theme === 'dark' ? "var(--color-white)" : "var(--color-black)",
       borderRadius: "0rem",
       padding: "4px 10px",
     },
     hover: {
-      backgroundColor: "var(--color-purple)",
+      backgroundColor: theme === 'dark' ? "var(--color-indigo)" : "var(--color-purple)",
       borderRadius: "2rem",
       padding: "4px 10px",
       transition: {
@@ -45,6 +45,7 @@ export default function NavAnimation({ text, className }) {
       className={className}
       variants={wordVariants}
       initial="initial"
+      animate={isActive ? "hover" : "initial"}
       whileHover="hover"
       style={{ display: 'flex', justifyContent: 'center' }}
     >

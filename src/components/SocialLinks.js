@@ -36,7 +36,7 @@ export default function SocialLinks({ animated = false, targetRef, className = '
         variants={linkVariants}
         initial="initial"
         whileHover="hover"
-        className='socialLink border-2 lg:border-3 border-purple text-purple hover:bg-purple hover:border-purple hover:text-black dark:hover:text-white transition-transform duration-600'
+        className='socialLink border-2 lg:border-3 border-black text-black hover:border-purple hover:bg-purple hover:text-white dark:border-white dark:text-white dark:hover:border-indigo dark:hover:bg-indigo dark:hover:text-black transition-transform duration-100'
       >
         <FaLinkedinIn />
       </motion.a>
@@ -47,7 +47,7 @@ export default function SocialLinks({ animated = false, targetRef, className = '
         variants={linkVariants}
         initial="initial"
         whileHover="hover"
-        className='socialLink border-2 lg:border-3 border-purple text-purple hover:bg-purple hover:border-purple hover:text-black dark:hover:text-white transition-transform duration-600'
+        className='socialLink border-2 lg:border-3 border-black text-black hover:border-purple hover:bg-purple hover:text-white dark:border-white dark:text-white dark:hover:border-indigo dark:hover:bg-indigo dark:hover:text-black transition-transform duration-100'
       >
         <TbBrandGithub />
       </motion.a>
@@ -57,9 +57,9 @@ export default function SocialLinks({ animated = false, targetRef, className = '
         variants={linkVariants}
         initial="initial"
         whileHover="hover"
-        className='socialLink border-2 lg:border-3 border-purple text-purple hover:bg-purple hover:border-purple hover:text-black dark:hover:text-white transition-transform duration-600'
+        className='socialLink border-2 lg:border-3 border-black text-black hover:border-purple hover:bg-purple hover:text-white dark:border-white dark:text-white dark:hover:border-indigo dark:hover:bg-indigo dark:hover:text-black transition-transform duration-100'
       >
-        <SiGmail />
+        <SiGmail className='w-6 h-6' />
       </motion.a>
     </>
   );

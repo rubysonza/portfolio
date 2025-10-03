@@ -83,8 +83,6 @@ export default function ContactPage () {
                 <div className="flex flex-col justify-center items-center gap-10">
                     <p className="text-center font-redditMono font-light text-lg sm:text-xl md:text-2xl lg:text-3xl">I'd love to hear from you!</p>
 
-                    <SocialLinks className='gap-7' />
-
                     <ContactForm />
                 </div>
             </div>

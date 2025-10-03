@@ -67,7 +67,7 @@ const ActionButton = ({ href = "#", text = "Click Me", icon: Icon = FiExternalLi
     <motion.a
       href={href}
       target="_blank"
-      className="relative flex items-center justify-center w-36 py-2 px-4 md:px-5 bg-purple rounded-full font-redditMono text-base md:text-lg font-bold tracking-widest uppercase overflow-hidden"
+      className="relative flex items-center justify-center w-36 py-2 px-4 md:px-5 bg-purple text-white dark:bg-indigo dark:text-black rounded-full font-redditMono text-base md:text-lg font-bold tracking-widest uppercase overflow-hidden"
       variants={buttonVariants}
       initial="rest"
       whileHover="hover"

@@ -48,11 +48,11 @@ export default function AboutSection() {
             style={{ opacity: listOpacity, y: listY }}
           >
             <motion.li className="flex items-center gap-3 text-base md:text-xl">
-              <FiMapPin className="text-purple text-xl md:text-2xl" />
+              <FiMapPin className="text-purple dark:text-indigo text-xl md:text-2xl" />
               <span>Bayonne, NJ</span>
             </motion.li>
             <motion.li className="flex items-center gap-3 text-base md:text-xl">
-              <PiGraduationCap className="w-6 h-6 text-purple text-xl md:text-2xl" />
+              <PiGraduationCap className="w-6 h-6 text-purple dark:text-indigo text-xl md:text-2xl" />
               <span>B.A. of Information Technology</span>
             </motion.li>
           </motion.ul>

@@ -106,7 +106,7 @@ function Greeting({ scrollYProgress }) {
                         variants={wordVariants}
                         style={{ y: rubyY, x: rubyX, scale: textScale }}
                     >
-                        <GreetingText text="Ruby" className="text-purple" />
+                        <GreetingText text="Ruby" className="text-purple dark:text-indigo" />
                     </motion.div>
                 </div>
             </motion.div>

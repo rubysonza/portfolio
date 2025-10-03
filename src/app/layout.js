@@ -1,6 +1,7 @@
 import { Josefin_Sans, Reddit_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Providers } from '@/components/Providers';
 
 const josefin_sans = Josefin_Sans({
@@ -26,7 +27,8 @@ export default function RootLayout({ children }) {
       <body className="bg-white dark:bg-black text-black dark:text-white transition-colors duration-400">
         <Providers>
           <Header />
-            {children}
+          {children}
+          <Footer />
         </Providers>
       </body>
     </html>

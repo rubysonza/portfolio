@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { RiMenu4Fill, RiCloseLine } from "react-icons/ri";
 import SocialLinks from "@/components/SocialLinks";
@@ -12,12 +13,12 @@ import { useTransitionContext } from '@/context/TransitionContext';
 export default function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname(); // Get the current path
 
   useLockBodyScroll(isMenuOpen);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // An array for easier mapping of nav items
   const navItems = [
     { href: "/about", label: "About", delay: "delay-200" },
     { href: "/projects", label: "Projects", delay: "delay-300" },
@@ -25,24 +26,18 @@ export default function MobileNav() {
   ];
 
   const handleLinkClick = (href) => {
-    // 1. Start a short delay before doing anything.
-    //    The user has clicked, but the menu will stay visible for this long.
     setTimeout(() => {
-      // 2. After the initial delay, start the menu's fade-out animation.
       setIsMenuOpen(false); 
-      
-      // 3. Wait for the fade-out animation to finish (300ms).
       setTimeout(() => {
-        // 4. AFTER that wait, navigate to the new page.
         router.push(href);
-      }, 100); // This is the DURATION of your fade-out animation.
-    }, 200); // This is the initial DELAY before the animation starts.
+      }, 100);
+    }, 200);
   };
 
   return (
     <>
       <div className="flex justify-between items-center max-w-full my-0 mx-auto">
-        <Link href="/" className="font-josefin text-purple font-extrabold text-lg lowercase z-50">
+        <Link href="/" className="font-josefin text-black dark:text-white font-extrabold text-lg lowercase z-50">
           Ruby Sonza
         </Link>
 
@@ -68,22 +63,19 @@ export default function MobileNav() {
               onClick={() => handleLinkClick(item.href)}
               className={`text-3xl font-bold tracking-wider uppercase transition-all duration-500 ease-out
                           ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}
-                          ${item.delay}`}
+                          ${item.delay}
+                          ${pathname === item.href ? 'text-purple' : ''}`}
             >
               {item.label}
             </Link>
           ))}
 
-          
-          
           <div
             className={`transition-all duration-300 ease-out delay-500
                         ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
             <ThemeToggleButton />
           </div>
-
-          
         </nav>
 
         <div className="flex w-full h-auto">

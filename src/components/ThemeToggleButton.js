@@ -16,7 +16,7 @@ export const ThemeToggleButton = () => {
   return (
     <motion.button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="text-purple cursor-pointer"
+      className="text-purple dark:text-indigo cursor-pointer"
       whileHover={{ scale: 1.2, rotate: 270 }}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 600, damping: 100 }}

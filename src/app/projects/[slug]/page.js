@@ -4,7 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { projects } from '@/data/projectsPageData';
-import ImageGalleryWrapper from '@/components/ImageGalleryWrapper'; // Import the wrapper
+import MediaGalleryWrapper from '@/components/MediaGalleryWrapper'; // Renamed import
 
 export async function generateStaticParams() {
     const files = fs.readdirSync(path.join(process.cwd(), 'src', 'content/projects'));
@@ -25,21 +25,19 @@ export default async function ProjectPage({ params }) {
     const { slug } = params;
     const { project, content, frontmatter } = getProjectData(slug);
     
-    // Create a components object to pass to MDXRemote
     const components = {
-        // Here we are creating a new component that has the gallery data "baked in"
-        ImageGallery: (props) => <ImageGalleryWrapper {...props} gallery={frontmatter.gallery} />,
+        // Pass the gallery data to the MediaGalleryWrapper
+        MediaGallery: (props) => <MediaGalleryWrapper {...props} gallery={frontmatter.gallery} />,
     };
 
     return (
         <main className="pt-[6rem] md:pt-[8rem]">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
                 <header className="text-center mb-12 md:mb-16">
                     <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4">{project.title}</h1>
                     <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2">
                         {project.tags.map((tag, i) => (
-                            <span key={i} className="px-3 py-1 text-sm font-medium font-redditMono border-2 border-purple text-purple">
+                            <span key={i} className="px-3 py-1 text-sm font-medium font-redditMono border-2 border-purple text-purple dark:border-indigo dark:text-indigo">
                                 {tag}
                             </span>
                         ))}
@@ -62,7 +60,6 @@ export default async function ProjectPage({ params }) {
                 ">
                     <MDXRemote source={content} components={components} />
                 </article>
-
             </div>
         </main>
     );

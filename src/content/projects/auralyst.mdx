@@ -3,21 +3,63 @@ title: 'Auralyst'
 description: 'A comprehensive skincare guide featuring routine steps, curated products, and an actives glossary.'
 date:
 technologies: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'GSAP']
+gallery: [
+    {
+        section: 'The Personal Spark',
+        media: [
+            { type: 'video', src: '/auralyst/videos/spark.mp4', alt: '' },
+        ]
+    },
+    {
+        section: 'Foundational Playground',
+        media: [
+            { type: 'video', src: '/auralyst/videos/playground.mp4', alt: '' },
+        ]
+    },
+    {
+        section: 'Building Interactivity',
+        media: [
+            { type: 'video', src: '/auralyst/videos/interactivity.mp4', alt: '' },
+        ]
+    },
+    {
+        section: 'Embracing Challenges',
+        media: [
+            { type: 'video', src: '/auralyst/videos/challenges.mp4', alt: '' },
+        ]
+    },
+    {
+        section: 'Vision and Growth',
+        media: [
+            
+        ]
+    },
+]
 ---
 
 Auralyst was born from a personal need to demystify skincare, evolving from a simple university project into a deep dive into the core languages of the web. Built from the ground up with vanilla HTML, CSS, and JavaScript, this project served as my personal playground for mastering DOM manipulation, client-side data handling, and integrating animation libraries like GSAP. While currently a demo, this case study explores the foundational challenges and learning moments that shaped my journey as a developer.
 
+<MediaGallery section="The Personal Spark" />
+
 #### The Personal Spark
 Auralyst began as a university project to solve a personal frustration: the overwhelming complexity of building a skincare routine. I wanted to create a tool that would bring clarity to the correct order of steps and help users avoid conflicting ingredients, which led to the core feature of separating AM and PM routines. My ambition grew beyond the initial assignment, and I transitioned the project from CodePen to a full VSCode environment. This move was a deliberate step towards building a true "all-in-one" skincare application—a single source of truth for routines, products, and ingredients, a feature I found lacking in existing apps and e-commerce sites like Sephora.
+
+<MediaGallery section="Foundational Playground" />
 
 #### Foundational Playground
 For my first major project, I made the strategic decision to build with the fundamentals: vanilla HTML, CSS, and JavaScript. This approach forced me to learn the intricacies of the web without the abstraction of a framework. It was in the "dirt" of vanilla JS that I had my first major breakthroughs, like truly understanding how to map over data to dynamically generate and filter content, a skill I honed while building the actives glossary page. To bring a level of polish to the site, I integrated GSAP, a powerful, industry-standard animation library that I was eager to learn. It allowed me to create complex, timeline-based animations, like the "fanning out" of the bottles on the homepage, that brought a professional feel to the user experience.
 
+<MediaGallery section="Building Interactivity" />
+
 #### Building Interactivity
 The most technically ambitious feature of Auralyst is the interactive product finder, built to allow users to filter and sort through a catalog of skincare products. The entire experience is powered by client-side JavaScript, which uses the fetch API to asynchronously load product data from local JSON files, ensuring a single source of truth and improving performance. One of the most complex challenges was connecting the user's saved routine to the product page's filter container. The logic involved storing the user's selected steps in localStorage, then, on the product page, reading that data to dynamically generate a set of filter buttons. When a filter is clicked, the JavaScript filters the master product list down to only the items that match the selected step, and then re-renders the product grid in the DOM.
 
+<MediaGallery section="Embracing Challenges" />
+
 #### Embracing Challenges
 Auralyst was a journey of trial and error, and every bug was a foundational lesson in how to think like a developer. I spent a significant amount of time debugging the logic for updating the routine when a user toggled between the AM and PM views, which taught me the importance of careful state management. Another challenge was animating the modal panel that slides in on the routine page; it required me to not just animate the panel itself, but also the grid layout of the parent container to create a smooth, seamless transition. This project was also my first real experience with localStorage, where I learned how to persist user data and ensure that deselected routine steps were correctly removed from the saved routine. These challenges solidified my understanding of core development concepts and the importance of visual hierarchy in UI design.
+
+<MediaGallery section="Vision and Growth" />
 
 #### Vision and Growth
 While Auralyst is currently a demo, it serves as a strong foundation and a testament to my learning process. My vision is to evolve it into a full-fledged application, with a backend and database for user accounts, and a more engaging, multi-faceted way for users to discover products. The most important outcome of this project, however, was the knowledge I gained. It was the perfect "playground" to solidify my understanding of the box model, visual hierarchy, and the core web languages. The lessons learned from the challenges I faced on Auralyst directly influenced my approach to building my portfolio, giving me the confidence and foundational skills to tackle more complex tools like React and Next.js.

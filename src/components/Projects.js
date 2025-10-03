@@ -27,17 +27,17 @@ function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
 
     return (
         <motion.div
-            className="absolute inset-0 flex flex-col justify-center items-center text-center gap-y-0 sm:gap-y-3"
+            className="absolute inset-0 flex flex-col justify-center items-center text-center w-full h-full gap-y-0 sm:gap-y-3"
             style={{ scale, opacity, y, pointerEvents }}
         >
-            <div className="flex flex-col w-full max-w-[85%] gap-2 sm:gap-7">
-                <Link href={`/projects/${project.slug}`} passHref>
+            <div className="flex flex-col justify-center items-center w-full max-w-full gap-2 sm:gap-7">
+                <Link href={`/projects/${project.slug}`} passHref className='flex justify-center items-center md:max-w-[75%]'>
                     <motion.div
                         variants={cardVariants}
                         initial="initial"
                         whileHover="hover"
                         whileFocus="hover"
-                        className="relative w-full aspect-3/2">
+                        className="relative w-full md: aspect-16/9">
                         <motion.img
                             src={project.image} 
                             alt={`${project.title} project screenshot`}
@@ -49,7 +49,7 @@ function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
                             variants={overlayVariants}
                             className="absolute inset-0 flex items-center justify-center"
                         >
-                            <button className="relative flex justify-center items-center text-center inset-0 py-4 px-5 gap-2 rounded-full hover:scale-105 transition-transform duration-500 bg-purple text-white text-3xl font-bold tracking-wider uppercase cursor-pointer">
+                            <button className="relative flex justify-center items-center text-center inset-0 py-4 px-5 gap-2 rounded-full hover:scale-105 transition-transform duration-500 bg-purple dark:bg-indigo text-white dark:text-black text-3xl font-bold tracking-wider uppercase cursor-pointer">
                                 View Case Study <FiArrowRight />
                             </button>
                         </motion.div>
@@ -58,7 +58,7 @@ function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
 
                 <motion.div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-4">
                     {project.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-0.5 text-xs sm:text-sm md:text-base font-redditMono border-2 border-purple text-purple">
+                        <span key={i} className="px-2 py-0.5 text-xs sm:text-sm md:text-base font-redditMono border-2 border-purple text-purple dark:border-indigo dark:text-indigo">
                             {tag}
                         </span>
                     ))}

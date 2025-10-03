@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { motion } from "framer-motion";
 import { projects } from '@/data/projectsPageData';
 import { FiExternalLink } from "react-icons/fi";
-import { Icon } from "@iconify/react";
 import { FiArrowRight } from "react-icons/fi";
 
 
@@ -27,36 +26,38 @@ function ProjectCard({ project }) {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center w-[85%] md:w-[70%] lg:w-[55%] xl:w-[50%] max-w-full gap-5">
+        <div className="flex flex-col justify-center items-center w-[85%] md:w-[70%] lg:w-[50%] xl:w-[45%] max-w-full gap-5">
 
-            <motion.div
-                variants={cardVariants}
-                initial="initial"
-                whileHover="hover"
-                className="relative w-full aspect-3/2 rounded-2xl cursor-pointer">
-                <motion.img
-                    src={project.image} 
-                    alt={`${project.title} project screenshot`}
-                    variants={imageVariants}
-                    className='object-cover border-3 dark:border-none shadow-[0_0_5px] rounded-2xl'
-                />
-
+            <Link href={`/projects/${project.slug}`} passHref>
                 <motion.div
-                    variants={overlayVariants}
-                    className="absolute inset-0 flex items-center justify-center"
-                >
-                    <button className="relative flex justify-center items-center text-center inset-0 py-4 px-5 gap-2 rounded-full hover:scale-105 transition-transform duration-500 bg-purple text-white text-3xl font-bold tracking-wider uppercase cursor-pointer">
-                        View Case Study <FiArrowRight />
-                    </button>
+                    variants={cardVariants}
+                    initial="initial"
+                    whileHover="hover"
+                    className="relative w-full aspect-16/9 rounded-2xl cursor-pointer">
+                    <motion.img
+                        src={project.image} 
+                        alt={`${project.title} project screenshot`}
+                        variants={imageVariants}
+                        className='object-cover border-3 dark:border-none shadow-[0_0_5px] rounded-2xl'
+                    />
+
+                    <motion.div
+                        variants={overlayVariants}
+                        className="absolute inset-0 flex items-center justify-center"
+                    >
+                        <button className="relative flex justify-center items-center text-center inset-0 py-4 px-5 gap-2 rounded-full hover:scale-105 transition-transform duration-500 bg-purple text-white dark:bg-indigo dark:text-black text-3xl font-bold tracking-wider uppercase cursor-pointer">
+                            View Case Study <FiArrowRight />
+                        </button>
+                    </motion.div>
                 </motion.div>
-            </motion.div>
+            </Link>
 
             <div className="flex flex-col justify-start w-full gap-3">
                 <div className="flex flex-row justify-between w-full px-3">
                     <h3 className="flex font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{project.title}</h3>
 
                     <a href={project.link} target="_blank">
-                        <FiExternalLink strokeWidth="2.2" className="w-6 h-6 sm:w-7.5 sm:h-7.5 text-purple hover:scale-110 transition-transform duration-300" aria-label="View website through an external link" />
+                        <FiExternalLink strokeWidth="2.2" className="w-6 h-6 sm:w-7.5 sm:h-7.5 text-purple dark:text-indigo hover:scale-110 transition-transform duration-300" aria-label="View website through an external link" />
                     </a>
                 </div>
 
@@ -64,7 +65,7 @@ function ProjectCard({ project }) {
 
                 <div className="flex flex-wrap justify-start items-center w-full gap-x-3 gap-y-2 pl-3 my-4">
                     {project.tags.map((tag, i) => (
-                        <span key={i} className="px-2 py-0.5 text-xs sm:text-sm md:text-base font-bold font-redditMono border-2 border-purple text-purple">
+                        <span key={i} className="px-2 py-0.5 text-xs sm:text-sm md:text-base font-bold font-redditMono border-2 border-purple text-purple dark:border-indigo dark:text-indigo">
                             {tag}
                         </span>
                     ))}

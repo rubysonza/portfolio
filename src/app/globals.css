@@ -9,7 +9,8 @@
   --color-black: #232323;
   --color-white: #FFF9F4;
   --color-gray: #505050;
-  --color-purple: #9174FF;
+  --color-purple: #674391;
+  --color-indigo: #B3A1F7;
 }
 
 ::-webkit-scrollbar {
@@ -27,7 +28,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme(--color-purple);
+  background: theme(--color-gray);
   
 }
 
