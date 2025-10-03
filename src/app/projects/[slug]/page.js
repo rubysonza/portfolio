@@ -2,9 +2,10 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import Image from 'next/image';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { projects } from '@/data/projectsPageData';
-import MediaGalleryWrapper from '@/components/MediaGalleryWrapper'; // Renamed import
+import MediaGalleryWrapper from '@/components/MediaGalleryWrapper';
 
 export async function generateStaticParams() {
     const files = fs.readdirSync(path.join(process.cwd(), 'src', 'content/projects'));
@@ -45,7 +46,7 @@ export default async function ProjectPage({ params }) {
                 </header>
 
                 <div className="mx-5 mb-12 md:mb-5">
-                    <img
+                    <Image
                         src={project.image}
                         alt={`${project.title} project screenshot`}
                         width={1200}

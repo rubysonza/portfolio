@@ -5,14 +5,14 @@ import MediaZoomModal from './MediaZoomModal';
 import { FaPlay } from 'react-icons/fa';
 
 export default function MediaGallery({ media }) {
-  if (!media || media.length === 0) {
-    return null;
-  }
-
   const [activeMedia, setActiveMedia] = useState(media[0]);
   const [isZoomed, setIsZoomed] = useState(false);
   const [focusedThumbnailIndex, setFocusedThumbnailIndex] = useState(0);
   const thumbnailRefs = useRef([]);
+  
+  if (!media || media.length === 0) {
+    return null;
+  }
 
   const handleThumbnailClick = (item) => {
     setActiveMedia(item);

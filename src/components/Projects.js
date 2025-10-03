@@ -8,7 +8,22 @@ import { FiArrowRight } from "react-icons/fi";
 
 
 
-function ProjectSlide({ project, opacity, scale, y, pointerEvents }) {
+function ProjectSlide({ project, i, animationProgress }) {
+
+    const projectsStart = 0.35;
+    const projectsEnd = 1;
+    const projectChapterDuration = (projectsEnd - projectsStart) / projects.length;
+
+    const start = projectsStart + i * projectChapterDuration;
+    const end = start + projectChapterDuration;
+
+    const fadeInPoint = start + 0.1;
+    const fadeOutPoint = end - 0.1;
+
+    const opacity = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [0, 1, 1, 0]);
+    const scale = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [0.7, 1, 1, 0.7]);
+    const y = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [500, 0, 0, -500]);
+    const pointerEvents = useTransform(opacity, (value) => (value > 0 ? 'auto' : 'none'));
 
     const cardVariants = {
         initial: { scale: 1 },
@@ -97,10 +112,6 @@ export default function ProjectsSection() {
     const titleScale = useTransform(animationProgress, [0, 0.15, 0.25, 0.35], [0.7, 1, 1, 0.7]);
     const titleY = useTransform(animationProgress, [0, 0.15, 0.25, 0.35], [500, 0, 0, -500]);
 
-    const projectsStart = 0.35;
-    const projectsEnd = 1;
-    const projectChapterDuration = (projectsEnd - projectsStart) / projects.length;
-
     return (
         <section ref={targetRef} className="relative h-[400vh]">
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
@@ -115,19 +126,7 @@ export default function ProjectsSection() {
                     </motion.div>
 
                     {projects.map((project, i) => {
-                        const start = projectsStart + i * projectChapterDuration;
-                        const end = start + projectChapterDuration;
-                        
-                        const fadeInPoint = start + 0.1;
-                        const fadeOutPoint = end - 0.1;
-
-                        const opacity = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [0, 1, 1, 0]);
-                        const scale = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [0.7, 1, 1, 0.7]);
-                        const y = useTransform(animationProgress, [start, fadeInPoint, fadeOutPoint, end], [500, 0, 0, -500]);
-
-                        const pointerEvents = useTransform(opacity, (value) => (value > 0 ? 'auto' : 'none'));
-
-                        return <ProjectSlide key={i} project={project} opacity={opacity} scale={scale} y={y} pointerEvents={pointerEvents} />;
+                        return <ProjectSlide key={i} project={project} i={i} animationProgress={animationProgress} />;
                     })}
                 </div>
             </div>
