@@ -39,22 +39,22 @@ function ContactForm() {
         <div className="flex flex-col justify-center items-center w-full gap-10">
                 <form onSubmit={handleSubmit} className="flex flex-col w-[80%] md:w-[60%] gap-10">
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="name" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Name<span className="text-red-600">*</span></label>
+                        <label htmlFor="name" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Name<span className="text-[#C20000] dark:text-[#FF8F8F] font-bold">*</span></label>
                         <input type="text" id="name" name="name" required className="py-2 px-4 font-redditMono border-1" />
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="email" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Email<span className="text-red-600">*</span></label>
+                        <label htmlFor="email" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Email<span className="text-[#C20000] dark:text-[#FF8F8F] font-bold">*</span></label>
                         <input type="email" id="email" name="email" required className="py-2 px-4 font-redditMono border-1" />
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="subject" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Subject<span className="text-red-600">*</span></label>
+                        <label htmlFor="subject" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Subject<span className="text-[#C20000] dark:text-[#FF8F8F] font-bold">*</span></label>
                         <input type="subject" id="subject" name="subject" required className="py-2 px-4 font-redditMono border-1" />
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="message" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Message<span className="text-red-600">*</span></label>
+                        <label htmlFor="message" aria-required className="font-redditMono text-base md:text-lg lg:text-xl">Message<span className="text-[#C20000] dark:text-[#FF8F8F] font-bold">*</span></label>
                         <textarea id="message" name="message" required className="py-3 px-4 font-redditMono border-1" />
                     </div>
 

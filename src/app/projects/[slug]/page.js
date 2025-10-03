@@ -50,7 +50,7 @@ export default async function ProjectPage({ params }) {
                         alt={`${project.title} project screenshot`}
                         width={1200}
                         height={800}
-                        className="rounded-lg border-3 shadow-2xl w-full h-auto"
+                        className="rounded-lg border-black dark:border-white border-2 shadow-2xl w-full h-auto"
                     />
                 </div>
 
