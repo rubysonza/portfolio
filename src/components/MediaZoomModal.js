@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { RiCloseLine } from 'react-icons/ri';
 
 export default function MediaZoomModal({ item, onClose }) {
@@ -40,9 +41,11 @@ export default function MediaZoomModal({ item, onClose }) {
               className="max-w-full max-h-full"
             />
           ) : (
-            <img
+            <Image
               src={item.src}
               alt={item.alt}
+              width={1920}
+              height={1080}
               className="max-w-full max-h-full object-contain"
             />
           )}

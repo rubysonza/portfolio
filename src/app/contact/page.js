@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import SocialLinks from "@/components/SocialLinks";
-import { motion } from "framer-motion";
 import { FiSend } from "react-icons/fi";
 import ActionButton from "@/components/ActionButton";
-import Footer from "@/components/Footer";
 
 function ContactForm() {
   const [status, setStatus] = useState('');
@@ -81,7 +78,7 @@ export default function ContactPage () {
                 </h1>
 
                 <div className="flex flex-col justify-center items-center gap-10">
-                    <p className="text-center font-redditMono font-light text-lg sm:text-xl md:text-2xl lg:text-3xl">I'd love to hear from you!</p>
+                    <p className="text-center font-redditMono font-light text-lg sm:text-xl md:text-2xl lg:text-3xl">I&apos;d love to hear from you!</p>
 
                     <ContactForm />
                 </div>

@@ -1,9 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 import { about } from "@/data/aboutPageData.js";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 
 
 export default function AboutPage() {
@@ -36,7 +37,7 @@ export default function AboutPage() {
                                 className="flex justify-end items-end w-full"
                             >
                                 <div className="flex justify-end items-end w-3/4">
-                                    <img
+                                    <Image
                                         src="/profile.webp"
                                         alt="Photo of Ruby Sonza"
                                         width={300}
