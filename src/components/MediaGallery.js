@@ -3,13 +3,23 @@
 import { useState, useEffect, useRef } from 'react';
 import MediaZoomModal from './MediaZoomModal';
 import { FaPlay } from 'react-icons/fa';
+import Image from 'next/image'; // Make sure Image is imported
 
 export default function MediaGallery({ media }) {
-  const [activeMedia, setActiveMedia] = useState(media[0]);
+  // --- FIX: All hooks are now at the top level, before any returns ---
+  const [activeMedia, setActiveMedia] = useState(media && media.length > 0 ? media[0] : null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [focusedThumbnailIndex, setFocusedThumbnailIndex] = useState(0);
   const thumbnailRefs = useRef([]);
-  
+
+  useEffect(() => {
+    // This effect now runs correctly on every render
+    if (media && media.length > 0 && !activeMedia) {
+      setActiveMedia(media[0]);
+    }
+  }, [media, activeMedia]);
+
+  // --- Early return is now AFTER all hooks ---
   if (!media || media.length === 0) {
     return null;
   }
@@ -35,11 +45,6 @@ export default function MediaGallery({ media }) {
     }
   };
 
-  useEffect(() => {
-    setActiveMedia(media[0]);
-  }, [media]);
-
-  // Single item layout
   if (media.length === 1) {
     const item = media[0];
     return (
@@ -47,10 +52,12 @@ export default function MediaGallery({ media }) {
         {item.type === 'video' ? (
           <video src={item.src} alt={item.alt} controls className="rounded-lg border-2 w-full cursor-pointer" />
         ) : (
-          <img
+          <Image
             src={item.src}
             alt={item.alt}
-            className="rounded-lg border-2 shadow-lg w-full cursor-zoom-in"
+            width={1200}
+            height={800}
+            className="rounded-lg border-2 shadow-lg w-full h-auto cursor-zoom-in"
             onClick={() => setIsZoomed(true)}
           />
         )}
@@ -61,7 +68,6 @@ export default function MediaGallery({ media }) {
     );
   }
 
-  // Gallery layout
   return (
     <>
       <div className="flex flex-col md:flex-row gap-4 my-8">
@@ -69,10 +75,12 @@ export default function MediaGallery({ media }) {
           {activeMedia.type === 'video' ? (
             <video src={activeMedia.src} alt={activeMedia.alt} controls className="rounded-lg w-full" />
           ) : (
-            <img
+            <Image
               src={activeMedia.src}
               alt={activeMedia.alt}
-              className="rounded-lg border-2 shadow-lg object-cover w-full cursor-zoom-in"
+              width={1200}
+              height={800}
+              className="rounded-lg border-2 shadow-lg object-cover w-full h-auto cursor-zoom-in"
               onClick={() => setIsZoomed(true)}
             />
           )}
@@ -88,10 +96,12 @@ export default function MediaGallery({ media }) {
                 activeMedia.src === item.src ? 'ring-2 ring-purple-500' : ''
               }`}
             >
-              <img
+              <Image
                 src={item.type === 'video' ? (item.thumbnail || item.src) : item.src}
                 alt={item.alt}
-                className="object-cover border-2 shadow-lg w-full h-full"
+                fill
+                sizes="25vw"
+                className="object-cover border-2 shadow-lg"
               />
               {item.type === 'video' && (
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center">
