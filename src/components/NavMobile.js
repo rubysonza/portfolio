@@ -8,7 +8,7 @@ import { RiMenu4Fill, RiCloseLine } from "react-icons/ri";
 import SocialLinks from "@/components/SocialLinks";
 import { ThemeToggleButton } from "@/components/ThemeToggleButton";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
-import { useTransitionContext } from '@/context/TransitionContext';
+import LogoAnimation from './LogoAnimation';
 
 export default function MobileNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,9 +37,7 @@ export default function MobileNav() {
   return (
     <>
       <div className="flex justify-between items-center max-w-full my-0 mx-auto">
-        <Link href="/" className="font-josefin text-black dark:text-white font-extrabold text-lg lowercase z-50">
-          Ruby Sonza
-        </Link>
+        <LogoAnimation />
 
         <button
           onClick={toggleMenu}
@@ -64,7 +62,7 @@ export default function MobileNav() {
               className={`text-3xl font-bold tracking-wider uppercase transition-all duration-500 ease-out
                           ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}
                           ${item.delay}
-                          ${pathname === item.href ? 'text-purple' : ''}`}
+                          ${pathname === item.href ? 'text-purple dark:text-indigo' : ''}`}
             >
               {item.label}
             </Link>

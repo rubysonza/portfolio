@@ -27,7 +27,7 @@ export default function AboutSection() {
 
 
   return (
-    <section ref={ref} className="relative h-[150vh]">
+    <section ref={ref} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen flex flex-col justify-center items-center text-center p-5 overflow-hidden">
 
         <motion.div

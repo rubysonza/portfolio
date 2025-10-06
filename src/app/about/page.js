@@ -19,13 +19,13 @@ export default function AboutPage() {
     const imageScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.5]);
 
     return (
-        <main ref={ref} className='py-[6rem] md:py-[8rem] flex flex-col justify-center items-center gap-15 lg:gap-30'>
-            <div className="relative h-[150vh]">
+        <div ref={ref} className='py-[6rem] md:py-[8rem] flex flex-col justify-center items-center'>
+            <div>
                 <div className='relative flex justify-center items-center h-auto'>
                     <h1 className="text-center px-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">Get to know me</h1>
                 </div>
 
-                <div className="relative h-[100vh] flex flex-col max-w-[1024px]">
+                <div className="relative flex flex-col max-w-[1024px]">
                     <div className="relative top-0 flex flex-col justify-center items-center">
                         <div className="relative flex justify-center items-end min-w-[280px] sm:min-w-[340px] md:min-w-[400px] lg:min-w-[500px]">
                             <div className="absolute top-4 sm:top-12 left-0 right-0 flex flex-col items-start w-60 h-auto pl-3">
@@ -83,6 +83,6 @@ export default function AboutPage() {
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggleButton } from "@/components/ThemeToggleButton";
 import dynamic from 'next/dynamic';
+import LogoAnimation from './LogoAnimation';
 
 const TextShuffle = dynamic(() => import('@/components/TextShuffle'), { ssr: false });
 
@@ -12,9 +13,7 @@ export default function DesktopNav() {
 
   return (
     <div className="grid grid-cols-3 items-center max-w-full my-0 mx-auto">
-      <Link href="/" className="flex justify-self-start items-center font-josefin text-black dark:text-white hover:text-purple dark:hover:text-indigo transition-transform duration-500 font-extrabold text-lg lowercase" aria-label="Go to home page">
-        Ruby Sonza
-      </Link>
+      <LogoAnimation />
 
       <nav className="desktopNav flex justify-self-center gap-8">
         <Link href="/about" className="text-white dark:text-black">
