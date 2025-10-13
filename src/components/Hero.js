@@ -122,7 +122,7 @@ export default function Hero() {
     });
 
     return (
-        <section ref={ref} className="relative w-full overflow-hidden">
+        <section ref={ref} className="relative w-full overflow-hidden select-none">
             <div className="h-screen flex items-center justify-center">
                 <div className="relative inset-0 flex justify-center items-center h-full w-full
                                 max-h-[400px] max-w-[450px] sm:max-w-[500px] md:max-h-[450px] md:max-w-[550px] lg:max-h-[600px] lg:max-w-[700px]">
