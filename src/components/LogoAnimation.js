@@ -44,7 +44,7 @@ export default function LogoAnimation() {
     <Link 
       href="/" 
       onClick={handleHomeClick}
-      className="flex justify-self-start items-center font-josefin text-black dark:text-white hover:text-purple dark:hover:text-indigo transition-colors duration-500 font-extrabold text-lg lowercase" 
+      className="z-50 flex justify-self-start items-center font-josefin text-black dark:text-white hover:text-purple dark:hover:text-indigo transition-colors duration-500 font-extrabold text-lg lowercase" 
       aria-label={isHomePage ? "Ruby Sonza Home" : "Back to home page"}
     >
       <div className="relative w-[160px] h-[1.2em] flex items-center">

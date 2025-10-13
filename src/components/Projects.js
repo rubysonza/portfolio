@@ -42,11 +42,11 @@ function ProjectSlide({ project, i, animationProgress }) {
 
     return (
         <motion.div
-            className="absolute inset-0 flex flex-col justify-center items-center text-center w-full h-full gap-y-0 sm:gap-y-3"
+            className="absolute inset-0 flex flex-col justify-center items-center text-center w-full h-full gap-y-5 sm:gap-y-3"
             style={{ scale, opacity, y, pointerEvents }}
         >
-            <div className="flex flex-col justify-center items-center w-full max-w-full gap-2 sm:gap-7">
-                <Link href={`/projects/${project.slug}`} passHref className='flex justify-center items-center md:max-w-[75%]'>
+            <div className="flex flex-col justify-center items-center w-full gap-5 sm:gap-7 max-w-[88%] md:max-w-[75%]">
+                <Link href={`/projects/${project.slug}`} passHref className='flex justify-center items-center'>
                     <motion.div
                         variants={cardVariants}
                         initial="initial"
@@ -80,11 +80,11 @@ function ProjectSlide({ project, i, animationProgress }) {
                 </motion.div>
             </div>
 
-            <div className="flex flex-col justify-center items-center max-w-lg gap-y-3 sm:gap-y-7">
+            <div className="flex flex-col justify-center items-center max-w-lg gap-y-5 sm:gap-y-7">
                 <span className="block text-base sm:text-xl md:text-2xl font-redditMono">{project.number}</span>
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-y-1">
                     <h5 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-3">{project.title}</h5>
-                    <p className="px-12 md:px-0 text-center text-sm sm:text-base md:text-lg lg:text-xl font-redditMono max-w-full">{project.description}</p>
+                    <p className="px-12 md:px-0 text-center text-sm sm:text-base md:text-lg lg:text-xl font-redditMono max-w-full leading-7 md:leading-10">{project.description}</p>
                 </div>
             </div>
         </motion.div>

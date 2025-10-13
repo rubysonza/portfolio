@@ -17,7 +17,7 @@ function ImageAndRotatingText({ scrollYProgress }) {
         <motion.div
             initial={{ opacity: 0, scale: 0.2 }}
             animate={{ opacity: 1, scale: 1, transition: { duration: 0.5, ease: "backInOut" } }}
-            className="absolute flex justify-center items-center p-4 top-20 lg:top-12 right-4"
+            className="absolute flex justify-center items-center p-4 top-0 right-5 md:right-0"
         >
             <motion.div
                 style={{ opacity, scale: imageScale, y: imageY, x: imageX, rotate: imageRotate }}
@@ -122,14 +122,12 @@ export default function Hero() {
     });
 
     return (
-        <section ref={ref} className="relative w-full h-[100vh] overflow-hidden">
+        <section ref={ref} className="relative w-full overflow-hidden">
             <div className="h-screen flex items-center justify-center">
                 <div className="relative inset-0 flex justify-center items-center h-full w-full
-                                max-h-[450px] max-w-[450px] sm:max-h-[500px] md:max-h-[550px] md:max-w-[575px] lg:max-h-[650px] lg:max-w-[720px]">
+                                max-h-[400px] max-w-[450px] sm:max-w-[500px] md:max-h-[450px] md:max-w-[550px] lg:max-h-[600px] lg:max-w-[700px]">
                     <Greeting scrollYProgress={scrollYProgress} />
                     <ImageAndRotatingText scrollYProgress={scrollYProgress} />
-                    
-
                 </div>
             </div>
         </section>

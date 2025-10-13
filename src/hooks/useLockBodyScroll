@@ -4,21 +4,19 @@ import { useEffect } from 'react';
 
 export const useLockBodyScroll = (isLocked) => {
   useEffect(() => {
-    // If the body shouldn't be locked, we don't need to do anything
     if (!isLocked) {
       return;
     }
 
-    // Get the original body overflow style
-    const originalStyle = window.getComputedStyle(document.body).overflow;
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
     
-    // Prevent scrolling
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 
-    // This cleanup function will run when isLocked changes from true to false,
-    // or when the component unmounts.
     return () => {
-      document.body.style.overflow = originalStyle;
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
     };
-  }, [isLocked]); // The hook now correctly depends only on the isLocked state
+  }, [isLocked]);
 };

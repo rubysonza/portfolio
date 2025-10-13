@@ -25,7 +25,7 @@ function ProjectCard({ project }) {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center w-[85%] md:w-[70%] lg:w-[50%] xl:w-[45%] max-w-full gap-5">
+        <div className="flex flex-col justify-center items-center w-[85%] md:w-[70%] lg:w-[50%] xl:w-[45%] max-w-full gap-y-5">
 
             <Link href={`/projects/${project.slug}`} passHref>
                 <motion.div
@@ -51,8 +51,8 @@ function ProjectCard({ project }) {
                 </motion.div>
             </Link>
 
-            <div className="flex flex-col justify-start w-full gap-3">
-                <div className="flex flex-row justify-between w-full px-3">
+            <div className="flex flex-col justify-start w-full gap-3 pl-2">
+                <div className="flex flex-row justify-between w-full">
                     <h3 className="flex font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">{project.title}</h3>
 
                     <a href={project.link} target="_blank">
@@ -60,9 +60,9 @@ function ProjectCard({ project }) {
                     </a>
                 </div>
 
-                <p className="pl-5 text-base md:text-lg lg:text-xl font-redditMono">{project.description}</p>
+                <p className="text-base md:text-lg lg:text-xl font-redditMono leading-8 lg:leading-10">{project.description}</p>
 
-                <div className="flex flex-wrap justify-start items-center w-full gap-x-3 gap-y-2 pl-3 my-4">
+                <div className="flex flex-wrap justify-start items-center w-full gap-x-3 gap-y-2 my-2">
                     {project.tags.map((tag, i) => (
                         <span key={i} className="px-2 py-0.5 text-xs sm:text-sm md:text-base font-bold font-redditMono border-2 border-purple text-purple dark:border-indigo dark:text-indigo">
                             {tag}
