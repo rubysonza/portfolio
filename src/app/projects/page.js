@@ -25,7 +25,7 @@ function ProjectCard({ project }) {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center w-[85%] md:w-[70%] lg:w-[50%] xl:w-[45%] max-w-full gap-y-5">
+        <div className="flex flex-col justify-center items-center w-[85%] md:w-[70%] xl:w-[60%] max-w-full gap-y-5">
 
             <Link href={`/projects/${project.slug}`} passHref>
                 <motion.div

@@ -43,7 +43,7 @@ export default function MobileNav() {
       <div
         className={`fixed inset-0 bg-white dark:bg-black z-40
                     transition-opacity duration-300 ease-in-out flex flex-col
-                    min-h-screen overflow-y-auto pt-24
+                    p-8 pt-24 h-[100dvh] 
                     ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         {/* Centered Navigation Items */}
@@ -70,8 +70,8 @@ export default function MobileNav() {
           </div>
         </nav>
 
-        {/* Social Links at the bottom, with top margin for spacing */}
-        <div className={`flex w-full justify-center pt-10 pb-8 transition-opacity duration-300 ease-out delay-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Social Links at the bottom */}
+        <div className={`flex w-full justify-center pt-10 transition-opacity duration-300 ease-out delay-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
             <SocialLinks className="gap-8" />
         </div>
       </div>

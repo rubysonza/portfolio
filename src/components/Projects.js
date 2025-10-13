@@ -45,7 +45,7 @@ function ProjectSlide({ project, i, animationProgress }) {
             className="absolute inset-0 flex flex-col justify-center items-center text-center w-full h-full gap-y-5 sm:gap-y-3"
             style={{ scale, opacity, y, pointerEvents }}
         >
-            <div className="flex flex-col justify-center items-center w-full gap-5 sm:gap-7 max-w-[88%] md:max-w-[75%]">
+            <div className="flex flex-col justify-center items-center w-full gap-5 sm:gap-3 max-w-[88%] md:max-w-[75%] xl:max-w-[80%]">
                 <Link href={`/projects/${project.slug}`} passHref className='flex justify-center items-center'>
                     <motion.div
                         variants={cardVariants}
@@ -71,7 +71,7 @@ function ProjectSlide({ project, i, animationProgress }) {
                     </motion.div>
                 </Link>
 
-                <motion.div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-4">
+                <motion.div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mb-2">
                     {project.tags.map((tag, i) => (
                         <span key={i} className="px-2 py-0.5 text-xs sm:text-sm md:text-base font-redditMono border-2 border-purple text-purple dark:border-indigo dark:text-indigo">
                             {tag}
@@ -80,11 +80,11 @@ function ProjectSlide({ project, i, animationProgress }) {
                 </motion.div>
             </div>
 
-            <div className="flex flex-col justify-center items-center max-w-lg gap-y-5 sm:gap-y-7">
-                <span className="block text-base sm:text-xl md:text-2xl font-redditMono">{project.number}</span>
+            <div className="flex flex-col justify-center items-center max-w-xl gap-y-5 sm:gap-y-7">
+                <span className="block text-base sm:text-lg md:text-xl xl:text-2xl font-redditMono">{project.number}</span>
                 <div className="flex flex-col gap-y-1">
-                    <h5 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-3">{project.title}</h5>
-                    <p className="px-12 md:px-0 text-center text-sm sm:text-base md:text-lg lg:text-xl font-redditMono max-w-full leading-7 md:leading-10">{project.description}</p>
+                    <h5 className="text-4xl sm:text-5xl xl:text-7xl font-semibold mb-3">{project.title}</h5>
+                    <p className="px-12 md:px-5 text-center text-sm sm:text-base md:text-lg xl:text-xl font-redditMono max-w-full leading-7 md:leading-10 xl:leading-13">{project.description}</p>
                 </div>
             </div>
         </motion.div>
