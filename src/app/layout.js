@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Providers } from '@/components/Providers';
+import { Analytics } from '@vercel/analytics/next';
 
 const josefin_sans = Josefin_Sans({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
