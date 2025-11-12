@@ -20,14 +20,14 @@ export default function DesktopNav() {
       <nav className="desktopNav flex justify-self-center gap-8">
         {isMounted && (
           <>
-            <Link href="/about" className="text-white dark:text-black">
-              <TextShuffle text="About" isActive={pathname === '/about'} />
+            <Link href="/about" >
+              <TextShuffle text="About" isActive={pathname === '/about'} className="text-white dark:text-black"/>
             </Link>
-            <Link href="/projects" className="text-white dark:text-black">
-              <TextShuffle text="Projects" isActive={pathname === '/projects'} />
+            <Link href="/projects">
+              <TextShuffle text="Projects" isActive={pathname === '/projects'}  className="text-white dark:text-black"/>
             </Link>
-            <Link href="/contact" className="text-white dark:text-black">
-              <TextShuffle text="Contact" isActive={pathname === '/contact'} />
+            <Link href="/contact">
+              <TextShuffle text="Contact" isActive={pathname === '/contact'} className="text-white dark:text-black"/>
             </Link>
           </>
         )}
